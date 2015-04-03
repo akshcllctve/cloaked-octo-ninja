@@ -1,0 +1,54 @@
+@import "variables";
+
+
+/* =JFG. Uncomment icons import when needed */
+@import "icons";
+
+
+/* BASE - Rules applied to elements + CoreCommerce adjustments. They define the default styling for how that element should look in all occurrences on the page. These should be neutral */
+// @import "../../../_corecommerce-base";
+@import "../../../css/responsive-framework/_corecommerce-base";
+
+
+/* LAYOUT - Layouts hold one or more modules together. All layout classes are prefixed with l- */
+@import "../../../css/responsive-framework/_corecommerce-layout";
+
+
+/* MODULES - Modules are the meat; the reusable, modular parts of our design. They sit inside layout e.g navigation bars, carousels, widgets. Modules typically combine a few classes together via group selectors and can be reliably moved around without breaking.
+For modules the descendent selector is *only* appropriate between multiple nodes of the same module (say, a tab container and it's tabs). 
+All modules should have description of how they are used. For example...
+
+/* Use to position something absolutely
+.absolute-centered__wrapper {
+  position: absolute;
+  left: 50%;
+}
+
+.absolute-centered__inner {
+  position: relative;
+  left: -50%;
+}
+
+/* Example...
+
+<div class='absolute-centered__wrapper'>
+  <div class="absolute-centered__inner">
+    I am some centered shrink-to-fit content!
+  </div>
+</div>
+
+*/
+@import "../../../css/responsive-framework/_corecommerce-modules";
+
+
+/* THEME - Specific content-dependent overrides for unique situations.
+These class overrides are location specific e.g. home only.
+Do not stick common properties in these classes, that's what modules are for.
+Classes in theme.scss should *always* contain descendent selectors and/or be specific to a CoreCommerce Theme, otherwise consider putting the selector in modules.
+If you find a class in theme.scss that is not also in modules, take it that no general properties are attached to it and it's used with specificity only.
+*/
+@import "theme";
+
+
+/* SHAME - bottom of stylesheet for overrides and so that we can make use of mixins. Uncomment if you need this */
+// @import "shame";

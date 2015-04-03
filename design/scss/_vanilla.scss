@@ -1,0 +1,3113 @@
+/* GROUP BASE / ELEMENTS
+=================================================== */
+.content-middle dl *:not(.btn) {
+    padding-left: 0;
+}
+
+dd {
+    margin-left: 0;
+}
+
+img { /* e.g. .page-home hero image */
+    /* height: auto!important; */
+}
+
+.label-for-select {
+    float: left;
+}
+
+@-moz-document url-prefix() { /* Only target Firefox */
+    select {  /* Fix for mis-vertically aligned Firefox select boxes based on http://stackoverflow.com/questions/5439782/i-want-to-vertical-align-text-in-select-box
+    This has been tested on Windows 7 too */
+        padding-top: 3px!important;
+        height: 28px!important;
+    }
+}
+/* GROUP BASE / ELEMENTS / TABLES
+=================================================== */
+table * {
+    max-width: 100%!important;
+/*  overflow: hidden; =JFG. Commented this out because it prevents border decoration
+e.g. .thumb box-shadow */
+}
+
+.lt-ie9 table img {
+  max-width: 160px!important; /* IE9 - does not seem to treat 100% the same way */
+}
+
+td a { /* e.g. >> /cart.php?m=view. Need this for when you go through cart.php?m=gift_certificates, adding a Gift Certificate to the cart */
+    display: block;
+}
+th,
+td {
+/*     display: inline-block; */ /* Not sure why I originally did this but it affects the .item-qty-pricing table */
+    font-weight: normal;
+    color: black;
+}
+td[data-title]:before /* e.g. so that we put space between the td:before and buttons on >> account.php?m=wishlist_view&p=21 */ {
+    display: inline-block; /* So that padding's effective */
+}
+
+
+
+
+.content-middle table:not(#order-list) img {
+    padding-top: 0; /* To =JFG. trump .content-middle */
+}
+
+
+
+
+/* 900 + */
+@media screen and (min-width: 56.25em) {
+    .responsive-tables th {
+        border-bottom: 2px solid #EDEDED;
+    }
+    .responsive-tables td {
+        padding-top: 1rem;
+    }
+    h5 + .responsive-tables {
+        padding-top: 0.7rem;
+    }
+}
+
+
+
+/* GROUP BASE / ELEMENTS / LINKS
+=================================================== */
+/* link-style-1 */
+a { /* Default */
+    text-decoration: none;
+    color: black;
+}
+
+.link-style-2,
+/* Module > Misc */
+.content-middle .link /* Not nav, which has .link for the Standard navigation */,
+/* Page > My Account >> account.php?m=customer_home */
+.page_customer_home .content-middle table a {
+    text-decoration: underline;
+}
+
+/* .link_style_3 { More in line with a btn--like action e.g. 'Advanced Search Logic' link in the Search widget */
+     /* In theme.scss because of cross-linking
+} */
+
+/* I don't tend to use this; but it's used to style unvisited pages */
+/* a:link {
+    
+} */
+
+/* a:visited {
+    color: #551a8b;
+} */
+
+/* A link becomes active when you click on it. */
+/* a:active {
+        
+} */
+
+
+
+
+/* GROUP BASE / FORMS
+=================================================== */
+.form-element--buttons {
+    clear: both;
+}
+
+
+
+
+/* GROUP BASE / ELEMENTS / INPUT
+=================================================== */
+input[type=text],
+input[type=email],
+input[type=password] {
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #DFDFDF;
+    border-bottom: 1px solid #DFDFDF;
+}
+
+
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+textarea {
+    box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #DFDFDF;
+    border-bottom: 1px solid #DFDFDF;
+}
+
+body input[value="Gift Certificate"] { /* Exception to general .m-b-s-1 e.g. >> /checkout.php?m=fastcheckout */
+    margin-bottom: 0;
+}
+
+input[type="radio"] {
+    margin-top: 0.2rem; /* Custom to line up e.g. >> /checkout.php?m=payment */
+}
+
+textarea /* Should be safe e.g. Knowledge base cart.php?m=knowledgebase_detail&id=1
+leave a reply to a blog post */ {
+    line-height: 1.4;
+    text-indent: 0;
+    color: #555; /* Lighter than black */
+}
+
+
+
+
+label img { /* e.g. Poli payment type on >> checkout.php?m=payment */
+    display: block;
+}
+label br {
+    display: none;
+}
+label .link { /* e.g. Poli payment type on >> checkout.php?m=payment */
+    display: inline-block;
+}
+
+
+
+
+select[multiple="multiple"],
+.select-multi { /* Select dropdowns that contain multiple lines...
+...e.g. multi select box personalisation on Page > Product Detail, account.php?m=change_billing */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+
+
+
+/* GROUP FONTS / STYLES
+=================================================== */
+/* Workhorse. */
+*,
+.f-1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+#setup-wizard * { /* We don't want to affect the Design Wizard (Admin > Design > Design Setup Wizard) */
+    font-family: inherit;
+}
+
+
+/* Stand-out text e.g. Product titles, buttons */
+.f-2,
+/* Module > Buttons */
+.btn--1,
+.btn--2,
+.btn--destruct,
+/* Module > Header */
+.top-bar a,
+/* Module > Nav */
+.top-nav div[id*="topNavTab"] a, /* Standard nav */
+.top-nav > ul > li > a, /* Dropdown nav > 1st level */
+.dd-submenu a, /* Dropdown nav > 2nd level (without affecting the Mega Menu) */ 
+/* Page > Product Detail */
+.product-min-qty-container * /* Minimum quantity */,
+.product-max-qty-container * /* Maximum quantity */,
+/* Page > View Cart */
+.field-value--price,
+.field-value--price *, /* e.g. <strong>Grand Total</strong> on >> checkout.php?m=fastcheckout */
+.compare-table-name a {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* Stand-out text alt (where we want to draw attention) e.g. Product titles, buttons */
+.f-5,
+/* Module > Buttons */
+.btn--my_account {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.f-4, /* This is being used in theme.scss */
+/* Base > Elements > Tables */
+.responsive-tables th[data-title]:before,
+.responsive-tables td[data-title]:before,
+.responsive-tables th:not([data-title]),
+/* Module > Breadcrumb */
+.breadcrumb *,
+/* Module > Grid */
+.grid-options__sort label,
+.grid-options > .grid-options__sort-filters > label:nth-child(1),
+/* Module > Product Grid */
+.item-name--product a,
+.message--form {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+}
+
+/* Typically Headings */
+.f-3,
+/* Module > Misc */
+.item-name--product,
+.item-name:not(td) a, /* e.g. Pillar Table */
+/* Module > Footer */
+.footer .title,
+/* Module > Nav */
+.element-title,
+/* Page > Blog Detail */
+.article-post__comment-date {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    text-transform: lowercase;
+}
+
+/* Assistive information e.g. price, breadcrumbs */
+.f-6,
+/* Module > Misc */
+.item-price .message-container--pricing, /* e.g. Related Products at the bottom of a product detail page (=JFG. Try Pillar table on my local db) */
+.product-list-item-price,
+.item-price--product, /* Based on */
+.msrp-container,
+.msrp-container *,
+/* Page > Product Detail */
+.product-msrp-container *  /* Product Detail > Information Tab 
+(Display MSRP and Savings Format). 
+To show this you need to enter both a "Price" and an "MSRP" in the fields above this setting */ {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+}
+
+.f-7,
+.page-title,
+.page-title *, /* E.g. Category links */
+/* Module > Header */
+.logo * {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+}
+/* Exception */
+.page-title {
+    letter-spacing: 0.1rem;
+}
+
+
+/* Useful Information - to break up reading flow */
+.f-8,
+/* Module > Misc */
+.item-options, /* e.g. >> cart.php?m=view. =JFG. to test add Pillar Table from my local db */
+.sort-options label,
+/* Module > Product Grid e.g. cart.php?m=product_list&c=CATEGORY_ID */
+/* e.g. category-image-top */.caption--image,
+/* Module > Footer */
+.footer__column,
+/* .grid--category-item-teaser p, */
+/* Module > Messages */
+.message--note,
+/* Module > Pagination */
+.pagination, .pagination *, /* e.g. >> account.php?m=previously_ordered_items and cart.php?m=knowledgebase_list&kbCatID=1 */
+/* Page > Knowledgebase >> cart.php?m=knowledgebase_list&kbCatID=1 */
+.results__count,
+ /* Page > Product Detail */
+.pricing-msg, /* Product Detail > Information Tab (Show MSRP Price Only) */
+/* Plugins > Nivo Slider */
+.theme-default .nivo-caption,
+ /* Page > view cart >> Tuesday, 26 November 2013 */
+.view-cart-or,
+/* Plugin > Gallery */
+.photo-container .caption--product div {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-style: italic;
+    text-transform: none; /* e.g. needed for nav.top-nav a[href=""] */
+}
+
+
+
+/* GROUP FONTS / ICONS
+=================================================== */
+.icons,
+/* Modules > Blog Categories */
+#widgetBlogCategories li,
+/* Modules > Blog Tags */
+#widgetBlogTags li {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+/* Stack Icons */
+/* .icon_stack, */
+/* Modules > Widgets > Blog Categories */
+#widgetBlogCategories li:before {
+    content: "\e60a\00a0";
+}
+/* Tag Icons */
+/* .icon_tag, */
+/* Modules > Widgets > Blog Tags */
+#widgetBlogTags li:before {
+    content: "\e60b\00a0";
+}
+/* GROUP FONTS / SIZES
+=================================================== */
+/* f-s-0-1 */
+/* Module > Misc */
+.sale-text, /* so it typically fits on one line .g. >> cart.php?m=view */
+.helper-text, /* e.g. e.g. Product Detail "(Max 25 Characters)". =JFG. Try the Pillar Table product in my local db */
+/* Module > Product Grid */
+.compare-table-description p,
+.pricing-msg, /* Override of .product-list-item-price font-size */
+/* Page > View Cart >> cart.php?m=view */
+.item-options {
+    font-size: 0.9em;
+}
+
+/* f-s-0-2 */
+/* Base > Elements */
+.field-value--price, /* e.g. Subtotal, VAT, Discount, etc. >> checkout.php */
+/* Module > Misc */
+.view-cart .item-price, /* e.g. >> cart.php?m=view. specifically .view-cart because we don't want to affect the comparison table. see testing spreadsheet for how to get to the comparison table
+*/
+.product-name--string, /* e.g. >> cart.php?m=view */
+.product-rating-overall,
+/* Module > Grid */
+.grid-options__sort label,
+.grid-options > .grid-options__sort-filters > label:nth-child(1),
+.product-list-item-price /* e.g. in the Featured section $25.99 line */,
+/* Module > Nav */
+.top-nav div[id*="topNavTab"], /* Standard nav > first level */
+.top-nav > ul > li > a  /* Drop down + Mega Menu > first level */,
+.dd-submenu /* Drop down > submenu (looks fine to have type bigger throughout all menus 
+on the dropdown */,
+/* Page > View Cart > Suggested Items >> cart.php?m=view */
+.cart-amounts,
+.page-view .item-name--product /* Specific to View Cart because this effects the Search page otherwise */ {
+    font-size: 1.1rem;
+}
+
+/* f-s */
+/* Module > Misc */
+.grid .item-price--product, /* e.g. restrict to things like the homepage grid; we don't want this in view cart */
+/* Module > Product Grid > Category List Specific */
+.grid--category-item-name,
+/* Module > Search Term >> /cart.php?m=search_results */
+.search-info,
+/* Module > Widgets */
+.widget .item-name--product,
+/* Page > Blog Detail */
+.article-post__comment-date,
+/* Plugin > Gallery */
+.photo-container .caption--product {
+    font-size: 1.3em;
+}
+
+/* f-s-1 */
+.personalization-chart h5,
+/* Module > Misc */
+.page_product_detail .msrp-container, /* Might need to restrict this to the Product Detail page */
+body .product-tab-content--related .item-name--product, /* Slightly smaller e.g. >> Product Detail */
+/* Page > Compare Products */
+.compare-table-name {
+    font-size: 1.524em; /* Adjusted 2013-10-16, based on .item-name--product, cart.php?m=search_results */
+}
+
+/* f-m */
+/* Base > Elements > Headings */
+.item-name--category, /* e.g. Homepage > Categories */
+/* Module > Footer */
+.footer .title,
+/* Module > Grid */
+.grid .item-name--product, /* Value based on this. Don't affect .widget .item-name--product */
+/* Module > Nav */
+body .top-nav .element-title /* E.g. Modules > Nav. 
+Prefix with body to override "a" element styling */ {
+    font-size: 1.8em;
+}
+
+/* f-l */
+/* Page > Product Detail */
+.page_product_detail .product-details .item-price--product { /* .product-details so we don't affect Related Products at the bottom of the page */
+    font-size: 2.3rem;
+}
+
+/* GROUP FONTS / SIZES / FIXED, for when we don't want them to exceed a certain size
+=================================================== */
+/* f-f-s */
+/* Page > Comparison Table >> cart.php?m=product_compare */
+.compare-table-description p,
+input[type=text], /* Dynamic font-size gets too big for inputs */
+input[type=password],
+select, /* e.g. multi-select box on >> cart.php?m=search */
+label {
+    font-size: 16px;
+}
+
+
+
+/* GROUP LAYOUT
+=================================================== */
+/* Spacing Values for consistent rhythm. Consider using a scale like http://24ways.org/2011/composing-the-new-canon/ */
+
+/* p-l-s-0 */
+/* Page > My Account > Main > >> /account.php */
+.page-customer_home a + .sublink {
+    padding-left: 0.25rem;
+}
+/* m-l-s-0 */
+/* Module > Misc */
+.tag /* e.g. Blog Tags widget '0 posts are tagged with <a class='tag'>Blog Tag 1</a> */ {
+    margin-left: 0.25rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Page > Knowledge Base >> /cart.php?m=knowledgebase_list&kbCatID=1 */
+ .results__count strong:nth-child(odd) /* e.g. 'Displaying *1* - 14 of *14* */ {
+    margin-left: 0.25rem;
+}
+
+
+
+/* .m-r-s-0 {
+    margin-right: 0.25rem;
+} */
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+.results__count strong:nth-child(even) /* e.g. 'Displaying 1 - *14* of 14 */,
+.results__count strong:nth-child(odd):nth-of-type(3) /* e.g. 'Displaying *1* - 14 of *14* */
+/* Module > Widgets */
+/* #content-left input[type="text"] */ /* =JFG. I commented these out based on "Join Our Newsletter" which has an input immediately followed by a button.
+I want the input flush and in line with the h3 */
+/* #content-right input[type="text"] */ {
+    margin-left: 0.25rem;
+}
+
+
+
+/* p-l-s */
+.stock-message,
+/* Page > Product Detail */
+#show-more-button + .button /* e.g. pagination 'view all' button */ {
+    padding-left: 0.8rem;
+}
+/* p-r-s */
+/* Module > Widgets */
+#content-right .item-price--product,
+#content-left .item-price--product,
+/* Page > Product Detail */
+.product-detail-qty-input .field-label {
+    padding-right: 0.8rem;
+}
+/* m-l-s */
+/* Base > Elements > Input */
+.form-label, /* button at bottom of cart.php */
+/* Module > Breadcrumbs */
+.breadcrumb__separator /* e.g. cart.php?m=search */ {
+    margin-left: 0.5rem; /* Check http://corecommerce-dev-fashionista.com/cart.php?m=view, the distance between the X and Remove before changing this value again. Might need .m_l_m for 0.8rem? */
+}
+/* Exceptions */
+td input[type="button"] + input[type="button"] /* =JFG. In table cells where there isn't enough room 
+e.g. Mini cart widget */ {
+    margin-left: 0;
+}
+.m-r-s,
+/* Base > Elements > Input */
+select, /* e.g. Rating select on >> /cart.php?m=knowledgebase_detail&id=1 */
+/* Module > Misc */
+.step-number /* e.g. checkout.php?m=fastcheckout */,
+/* Module > Breadcrumbs */
+.breadcrumb__separator /* e.g. cart.php?m=search */,
+/* Module > Button */
+.button {
+    margin-right: 0.5rem; /* Changed this from 0.8rem to 0.5rem because of the qty label on the cart.php?m=cart_home */
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Base > Elements > Input */
+input[type="radio"],
+input[type="checkbox"],
+label, /* e.g. Email on login reminder page http://corecommerce-dev-fashionista.com/login.php?m=password&email= */
+.label /* e.g. Labels on search page [cart.php?m=search] */,
+input[value="Compare"] + input[value="Add All Items to Cart"], /* e.g. "Compare" and "Add All Items To Cart"
+/* e.g. "Add To Wishlist" right next to
+"Back To My Account" like account.php?m=wishlist_view. Used to be input[type="button"] + input[type="button"] but I cancelled this because if the input goes onto the next line it has a left indent and doesn't look correct */
+input[type="button"] {
+    margin-right: 0.5rem; /* Changed this from 0.8rem to 0.5rem because of the qty label on the cart.php?m=cart_home */
+}
+
+
+.m-r-s-1,
+/* Base > Elements > Input */
+/* Module > Misc */
+.button /* e.g. >> /account.php?m=change_shipping */ {
+    margin-right: 0.8rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Base > Elements > Input */
+/* Horizontal spacing for the inputs */
+input:not[name="search"], /* Not the search box in the header */
+.view-orders-period-drop-down-title,
+/* Page > Subscribe >> /account.php?m=subscribe */
+.subscribe label[for="emailAddress"] /* Specific to Subscribe because it 
+affects login.php?m=create_account&go=&email= */ {
+    margin-right: 0.8rem;
+}
+/* 768 + */
+@media screen and (min-width: 48em) {
+    .m-r-s-1--mq_768_up,
+    /* Page > View Cart */
+    .cart-amounts dt,
+    .cart-amounts dd {
+        margin-right: 0.8rem;
+    }
+}
+.lt-ie9 .cart-amounts dt, /* IE8 is not recognising the media query above */
+.lt-ie9 .cart-amounts dd {
+    margin-right: 0.8rem;
+}
+
+
+.p-r-m,
+/* Page > Product Detail */
+#extraDetails .qty {
+    padding-right: 1.5rem;
+}
+/* m-r-m */
+/* Page > View Cart */
+.btn-group--gateway > * {
+    margin-right: 1.5rem;
+}
+/* 768 + */
+@media screen and (min-width: 48em) {
+    /* m-r-m-mq-768-up */
+    /* Page > View Cart */
+    .cart-amounts dd {
+        margin-right: 1.5rem;
+    }
+}
+.lt-ie9 .cart-amounts dd /* IE8 is not recognising the media query above */ {
+    margin-right: 1.5rem;
+}
+
+
+
+.m-r-l,
+/* Header */
+/* Page > Product Detail */
+/* .extraDetails */ .share .form-field {
+    margin-right: .5663rem;
+}
+.m_l_l,
+#calculateTaxLink {
+    margin-left: .5663rem;
+}
+
+
+
+
+/* GROUP LAYOUT / CONSTRAINTS
+=================================================== */
+/* l-w-l-1 */
+/* Base > Elements > Input */
+.field-label, /* e.g. cart.php?m=view */
+textarea /* Should be safe e.g. Knowledge base cart.php?m=knowledgebase_detail&id=1
+leave a reply to a blog post */ {
+    padding-right: 0.35rem; /* Based on .field-label */
+    padding-left: 0.35rem;
+}
+
+.l-w-l,
+/* Base > Elements */
+dl,
+/* Base > Elements > Tables */
+.responsive-tables, /* This should stay based on >> account.php */
+/* Base > Elements > Input */
+.content-middle .field, /* e.g. /checkout.php?m=fastcheckout.
+Specific to middle content, to not affect widgets like the search field */
+/* Base > Forms */
+.form-element, /* e.g. cart.php?m=search */
+/* Module > Misc */
+/* Based on homepage email reminders */
+.reminders,
+/* Just the grid because we don’t want to affect tables. Search for "Homepage with qty option available" in the testing spreadsheet for how to replicate */
+.grid .item-options,
+ .confirm-text, /* e.g. Confirm Order page */
+.product-rating-overall, /* e.g. Product Page Detail (Customer Reviews at the bottom). May need to restrict this to the .page_product_detail */
+.pagination,
+.blurb-top--search, /* >> cart.php?m=search */
+/* .blurb-top, */ /* =JFG. Need to figure out which page I put this on so it can specific to that (it messeses up View Cart) */
+/* .blurb-middle, */
+.article-post img, /* So they line up with p tags */
+.item-name,
+.grid .item-price, /* Don't affect tables */
+.item-qty,
+.compare,
+/* .search-form, Cancelled this out because of how it affects >> cart.php?m=knowledgebase */
+.compareButton, /* e.g. Your Recently Viewed items widget */
+.sort-options, /* e.g. category page like /Accessories/ */
+.element-line-h, /* Dividers e.g. Modules Nav */
+.field-value--price, /* e.g. cart.php?m=view */
+.results__count, /* e.g. cart.php?m=knowledgebase_list&kbCatID=1 */
+.btn-group, /* e.g. My Account 'Repeat This Order' and 'Printer Friendly Receipt' > account.php?m=order_detail&oNum=1379500086-861 */
+.account-info dd, /* e.g. account.php, My Account */
+.btn-group--checkout-complete, /* e.g. checkout complete page */
+.message, /* Based on >> checkout.php?m=fastcheckout */
+.breadcrumb__inner, /* e.g. cart.php?m=contact_us */
+.hdr-title, /* e.g. My Downloadable Files - account.php?m=customer_download_links&oNum=1379500086-861 */
+.logout, /* e.g. account.php?m=customer_edit_registry */
+.item-qty-pricing td,
+/* Module > Blog */
+.article-post__comment-date,
+/* Module > Buttons */
+.batchAddToCartButton, /* e.g. product detail > bundles */
+/* Module > Content */
+.content ul,
+.content ol,
+.content p,
+/* Module > Footer */
+.copyright,
+.copyright-small,
+.footer .title,
+.footer ul,
+.actionItems,
+
+
+
+/* Module > Grid */
+/* .grid, */ /* This is in theme.scss because it changes depending on variable breakpoints */
+/* Module > Grid > Category List Specific e.g. cart.php?m=product_list&c=CATEGORY_ID */
+/* .category-image--top */ .caption--image, /* Might need to make this more specific */
+.category-image--top,
+.category-image--bottom,
+.category-drop-down,
+/* Module > Messages */
+.message-container, /* e.g. homepage "Add to Cart to Show Sales Price", billing page */
+/* Module > Nav > Standard */
+/* #topNav, */
+/* Module > Products > Related */
+.products-related .title a,
+.products-related .details,
+/* Module > Tab Content e.g. Product Detail */
+.product-tab-content--reviews,
+/* Module > Rating */
+.rating__number, /* e.g. within homepage grid */
+/* Module > Widgets */
+.widget__body,
+#content-left .body,
+#content-right .body,
+#pageNote,
+/* Plugins > Nivo Slider */
+body .nivo-caption,
+/* Page > Checkout - checkout.php */
+.payment .checkout-btn,
+.checkout-btn, /* Order Complete e.g. orderSubmitted.php */
+.checkout-input-radio /* e.g. Payment Information checkout.php?m=payment */,
+/* Page > Confirm Order Information */
+.confirm-product-name,
+.confirm-product-price,
+.confirm-product-qty,
+.confirm-number,
+/* Page > Contact Us */
+.form-label, /* Might need to restrict this depending how it affects other pages */
+.form-field,
+/* Page > Customer Login */
+.page-client_login .checkbox-container, /* Login.php?m=client_login */
+/* Page > Create Account > Multiple Shipping */
+#checkoutMultishipChoice,
+/* Knowledge Base > Detail >> cart.php?m=knowledgebase_detail&id=1 */
+.page-knowledgebase_detail #knowledgebase form /* Need to be specific to the detail page 
+so we don't affect the Knowledge Base List (cart.php?m=knowledgebase) */
+/* Page > Login */
+.login-form,
+/* Page > Login > Reminder */
+.form-element--email-input,
+/* Page > My Account > Change Billing >> /account.php?m=change_shipping */
+.change_shipping #my-account-billing-shipping,
+/* Page > My Account > Main */
+.account-info dt, /* Headings like 'Reward Points' */
+/* Page > My Account > Previously Ordered Items >> /account.php?m=previously_ordered_items */
+.previously_ordered_items .container,
+/* Page > Order Confirmation */
+.address-text,
+/* Page > Product Detail */
+.product-image-caption,
+.btn-group--gateway,
+.coupon,
+.btn-group--cart,
+/* .page-product_detail */ .back-to-list,
+/* Page > Product Detail > Bundles */
+#bundleOverview,
+/* Page > Product Detail > Gallery */
+/* .page-product_detail */ #productPhotos,
+/* Page > Product Detail > Reviews */
+.review__rating,
+.review__author,
+/* Page > Reminder Removed e.g. cart.php?m=remove_reminder&id=35 */
+#reminderRemoved,
+/* Page > Reward Points - account.php?m=reward_history */
+.points,
+/* Page > Reward History */
+.reward_history .pageNote, /* e.g. account.php?m=reward_history,
+specific to this page becasue it affects category page with a password
+e.g. http://corecommerce-dev-fashionista.com/Men-s-Fashion/ */
+/* Page > Search */
+.search-info,
+#searchFormCategory,
+#searchFormShopByPrice,
+#searchFormVendor,
+#searchFormSubmit,
+#searchFormKeywords,
+/* Page > Subscribe (Newsletter) - account.php?m=subscribe&email=<mailID> */
+.subscribe .logout,
+/* Page > View Cart >> cart.php?m=view */
+.cart-amounts .field-label,
+.view-cart__item .thumb,
+.btn-group--cart-calculations,
+.view-cart-or {
+    padding-right: 1rem; /* Do not use percentages for width constraints because if shifts vertical text alignment */
+    padding-left: 1rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Page > Product Detail > Bundles */
+#extraDetails > *:not(.product-actions)
+/* Page > View Cart >> /cart.php?m=view */ {
+    padding-right: 1rem; /* Do not use percentages for width constraints because if shifts vertical text alignment */
+    padding-left: 1rem;
+}
+/* IE8 can't handle the advanced selector above, so let's go less-than-perfect */
+.lt-ie9 #extraDetails > * {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+/* Exceptions */
+/* Base > Elements */
+.confirm-number .field-label, /* e.g. >> /checkout.php */
+.confirm-number .field-value--price, /* e.g. >> /checkout.php */
+.form-element .checkbox-container,
+.compare-table p, /* e.g. cart.php?m=product_compare because the p is already in a padded td */
+#popup-product-main .item-info--product,
+#popup-product-main .page-title,
+#popup-product-main .page-sub-title,
+.product-list-item-compare .checkbox-container, /* e.g. cart.php?m=search_results&catID=&shopByPrice=&venID=&search=dress */
+.product-detail-field .field-label, /* e.g. Product Detail Page, cart.php?m=product_detail&p=57&lastAddedItemId=123 */
+/* Module > Product Review */
+.product-tab-content--reviews *:not(.field-label):not(.btn),
+/* Page > Multi Ship Choice */
+.multi_ship_choice .form-field, /* checkout.php */
+/* Page > Knowledgebase List >> /cart.php?m=knowledgebase_list&kbCatID=1 */
+/* ul*/.article-post--kb-list,
+/* Page > Product Detail e.g. >> /cart.php?m=product_detail&p=35 */
+.pricing-msg,
+/* Page > Product Detail > Reviews */
+#productReviewsAdd p {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* When It's Not Possible To Wrap Another Div Around, With Padding */
+/* Module > Misc */
+.edit-cart /* e.g. "Edit Shopping Cart" checkout.php?m=fastcheckout */,
+.bill .progress /* e.g. Next button on checkout.php?m=bill */,
+p + .button, /* e.g. Add To Wishlist button, account.php?m=wishlist_view */
+/* input[value="Back to My Account"],*/ /* ~e.g. account.php?m=reward_history~. Cancelled because it affected Order Complete page after going through fastcheckout */
+/* Module > Buttons */
+.page-fastcheckout .btn--submit, /* e.g. "Submit My Order" >> checkout.php?m=fastcheckout.
+Don't want to affect /account.php?m=change_billing */
+/* Module > Tabs e.g. Page > Product Detail */
+.product_reviews_add_note .btn--submit,
+/* Module > Widgets */
+.all-link, /* e.g. 'View All Featured' button */
+.login-new .button, /* Create a new account button */
+/* Page > Order Details >> /account.php?m=order_detail&oNum=1379500086-861 */
+.page-order_detail .form-element--buttons,
+.page-product_detail .btn--add-review,
+/* Page > Product Detail > Personalization Chart */
+.personalization-chart .btn--add-to-cart, /* Do not wrap .btn-group around this because it 
+negatively impacts "Add to Cart" when the personalization chart is NOT present */
+/* Page > Reward Points - account.php?m=reward_history */
+.reward_history #clientAccount input /* Specifically reward history page
+because it negatively affects account.php?m=change_password */ {
+    margin-left: 1rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Module > Misc */
+.wishlist_view input[value="Add to Wishlist"],
+/* Module > Product List */
+.product_list input[name="password"] /* e.g. cart.php?m=product_list&c=10. Specified .product_list because it affects login.php?m=create_account&go=&email= */,
+/* Page > Contact Us - cart.php?m=contact_us_save */
+.contact_us_save input[type="submit"] {
+    margin-left: 1rem;
+}
+/* - 388 */
+@media screen and (max-width: 24.1875em){ /* Hacky :-( */
+    /* >> /cart.php?m=product_list&c=10 */
+    .product_list .btn--continue { /* e.g. Password protected page like Men-s-Fashion/ */
+        margin-left: 1rem;
+    }
+}
+.l-w-l--l,
+/* Module > Nav > Mobile */
+.header-search-container {
+    padding-left: 1rem;
+}
+
+
+
+
+
+
+/* l-w-mx-wrapper */
+/* Page > Product Detail */
+.product-summary /* =JFG. Wraps the photo gallery and price info */ {
+    position: relative;
+    max-width: 1700px; /* Needs to be wide enough to contain both the left and right widgets plus the main content */
+    margin-right: auto;
+    margin-left: auto;
+}
+/* Exceptions */
+.page-home .frame {
+    max-width: none;
+}
+
+.l-w-mx-l,
+/* Module > Misc */
+.sort-options, /* e.g. cart.php (home) */
+.grid-function-buttons, /* 'Add all items to cart' */
+.sort-options, /* e.g. homepage */
+/* Module > Nav */
+.top-nav,
+/* Module > Product Grid > Category List Specific */
+.category-drop-down,
+/* Page > Home */
+.slider-wrapper,
+.page-home .product-list,
+/* Page > Search Results */
+/*body*/.search_results .more-results {
+    position: relative; /* Needed for .header-search-container to lock into the container on the homepage */
+    max-width: 1460px; /* l */
+    margin-right: auto;
+    margin-left: auto;
+}
+/* Page > Home. Separate advanced selector for IE8 */
+.page-home form[name="ds_products"] h1 {
+    max-width: 1460px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* l-w-mx-m */
+/* Base > Elements */
+p,
+.content-middle ul, /* e.g. cart.php?m=registry_search_results */
+/* Module > Misc */
+.content-middle,
+.num-of-items,
+.checkout-btn, /* e.g. /checkout.php?m=payment */
+.product_compare .content-middle, /* cart.php?m=product_compare */
+#one-page-checkout,
+#information_div /* e.g. checkout.php?m=fastcheckout */,
+#my-account-billing-shipping,
+.button_group, /* Order page > e.g. account.php?m=order_detail&oNum=1379500086-861 */
+div.order-info, /* Order Page > e.g. account.php?m=order_detail&oNum=1379500086-861 */
+.message--form, /* e.g. checkout.php?m=bill '* Denotes a required field' */
+.breadcrumb__inner, /* e.g. cart.php?m=contact_us */
+/* Module > Content */
+/* .content-middle, */ /* Cancelled because it prevents me 
+having breadcrumbs full width, keep having to undo this */
+/* Module > Footer */
+#widgetFooter,
+/* Module > Nav */
+.top-nav,
+#topNav,
+.top-nav ul,
+/* Module > Product Grid > Cateogry Specific */
+.category-image--top,
+.category-image--bottom,
+/* Module > Widgets > Footer */
+.widgetImages,
+/* Module > Content > Headings */
+.page-title,
+/* Module > Content */
+.page-content,
+.form-element,
+/* Module > Messages */
+.message-container,
+/* Module > Widgets */
+.content-left-_inner,
+.content_right__inner,
+/* Page > Blog Post Details */
+.blog_post_detail .content-middle,
+/* Page > Create Account */
+.create_account #content,
+/* Page > Create Account > Billing checkout.php?m=bill */
+.bill form,
+/* Page > Create Account > Multiple Shipping */
+#checkoutMultishipChoice,
+/* Page > Create Account > Payment Information */
+.payment #content,
+/* Page > Create Account > Ship To Address checkout.php?m=ship */
+.ship form,
+/* Page > Customer Home, account.php?m=page_customer_home */
+.page-customer_home .content-middle,
+.product_list .content-middle, /* e.g. cart.php?m=product_list&c=10 */
+/* page > Home */
+.page-home #pageNote,
+.home-top-content p, /* Cannot have the normal 
+l-w-mx-reading (see the notes around that class for why) */
+/* Page > Home > Top Sellers */
+.home-content p,
+/* Page > Knowledge Base Article */
+/* Page > Login > Reminder */
+#forgot-password, /* Wrapper For This Section */
+.article-post--kb, /* e.g. cart.php?m=knowledgebase_detail&id=1 */
+/* Page > Product Detail */
+#productReviewsAdd,
+#productReviewsAddNote,
+/* Page > Remove Reminder (e.g. cart.php?m=remove_reminder&id=35) */
+.remove_reminder .content-middle,
+/* Page > Search */
+.search-info,
+/* Page > Search Results 
+e.g. cart.php?m=search_results&catID=&shopByPrice=&venID=&search=dress */
+.search_results .content-middle,
+/* Page > View Cart */
+.view-cart table,
+#empty-cart,
+.cart-amounts,
+.coupon,
+.btn-group--cart-calculations,
+.btn-group--cart,
+.view-cart-or,
+.btn-group--gateway {
+    max-width: 1314px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Page > Home > Top Sellers */
+.top_sellers form[name="ds_products"] {
+    max-width: 1314px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Exceptions */
+/* Page > Billing account.php?m=change_billing */
+.change_billing .content-middle, 
+/* Page > Contact Us */
+.contact_us .content-middle,
+/* Page > Home */
+.page-home .content-middle,
+/* Page > Search */
+.search .content-middle,
+/* Plugins > Gallery */
+.photo-container ul {
+    max-width: none;
+}
+
+/* l-w-mx-reading */
+/* Page > Blog > Individual Post e.g. >> /cart.php?m=blog_post_detail&id=1 */
+#post-body,
+/* Page > Knowledge Base > Multiple Pages */
+#knowledgebase,
+/* Page > Single Product */
+#productReviewsAddNote .body,
+.nivo-caption {
+    max-width: 46rem; /* reading */
+    margin-right: auto;
+    margin-left: auto;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+.content p:not(.categoryTitleHeader):not(.home-top-content p) {
+    max-width: 46rem; /* reading */
+}
+
+
+
+
+/* GROUP LAYOUT / COLUMNS - Remember to update this if the .l_col class in layout.scss changes
+Columns are NOT a modification because we can't use .l_col,
+since we cannot create multiple dimensions between different group selectors
+that are not applied to the body
+=================================================== */
+/* 768 + */
+@media screen and (min-width: 48em) {
+/*     .l-col-33--mq-768-up, */ /* DNU */
+    body #widgetFooter > div {
+        float: left;
+        position: relative;
+        width: 33.33%;
+    }
+}
+.lt-ie9 body #widgetFooter > div {
+    float: left;
+    position: relative;
+    width: 33.33%;
+}
+
+/* 1024 + */
+@media screen and (min-width: 64em) {
+    body #widgetFooter > div {
+        width: 25%;
+    }
+}
+
+/* l-col-50 */
+/* Module > Products > Related */
+.products-related img,
+.products-related .title a,
+.products-related .details,
+/* Page > Products > Detail */
+.product_detail_btn_wrapper {
+    float: left;
+    position: relative;
+    width: 50%!important; /* Need important to override inline widths */
+}
+/* 570 + */
+@media screen and (min-width: 35.625em) {
+/*     .l-col-50--mq_570_up, */ /* DNU */
+    #widgetFooter > div {
+        float: left;
+        position: relative;
+        width: 50%;
+    }
+}
+/* 768 + */
+@media screen and (min-width: 48em) {
+/* l-col-40-mq-768-up */
+    /* Page > Product Detail */
+    #extraDetails {
+        float: left;
+        position: relative;
+        width: 40%;
+    }
+/* l-col-60-mq-768-up */
+    /* Page > Product Detail */
+    /* Photos */ #productPhotos {
+        float: left;
+        position: relative;
+        width: 60%;
+    }
+}
+
+
+
+
+
+/* GROUP LAYOUT / HIDER CLASSES
+=================================================== */
+/* 600 + */
+/* @media screen and (min-width: 37.5em) {
+    .mq_600_down {
+        display: none;
+    }
+} */
+
+
+/* GROUP LAYOUT / VERTICAL RHYTHM
+=================================================== */
+.p-b-s-0,
+/* Base > Elements */
+.field-label, /* e.g. >> /checkout.php */
+/* Module > Misc */
+.step-number,
+/* Module > Nav */
+.top-nav .element-textstr,
+/* Module > Product List */
+.product-list-item-compare .checkbox-container, /* Smaller than the default, 
+e.g. cart.php?m=search_results */
+/* Page > Login */
+.login-form .checkbox-container, /* 'Remember Me' Checkbox */
+/* Page > Product Detail */
+.listPrice,
+#extraDetails .product-key {
+    padding-bottom: 0.25rem;
+}
+/* p-t-s-0 */
+/* Module > Nav */
+.top-nav .element-textstr,
+/* Module > Misc */
+.step-number,
+.cart-amounts {
+    padding-top: 0.25rem;
+}
+/* m-b-s-0 */
+/* Base > Elements > Tables */
+td[data-title]:before, /* e.g. so that we put space between the td:before and buttons on >> account.php?m=wishlist_view&p=21 */
+td a,
+/* Module > Product List */
+.btn-group--products {
+    margin-bottom: 0.25rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Module > Widgets */
+.widget--poll input[type="radio"] {
+    margin-bottom: 0.25rem;
+}
+
+.m-t-s-0,
+input[type="checkbox"] /* e.g. >> /login.php?m=client_login */ {
+    margin-top: 0.25rem;
+}
+
+
+
+.p-b-s-0_1,
+/* Base > Elements > Forms */
+.label-separate-line-always,
+.label-separate-line-mobile,
+/* Base > Elements > Forms */
+.container label, /* e.g. Email on login reminder page http://corecommerce-dev-fashionista.com/login.php?m=password&email=
+Specific to .container so we don't affect the Design Wizard (Admin > Design > Design Setup Wizard) */
+/* Module > Misc */
+.remember_me, /* e.g. >> login.php?m=client_login */
+.clickableText a, /* e.g. Page > Product Detail */
+/* Module > Content */
+/* Module > Widgets */
+#content-left li,
+#content-right li,
+.content-middle li /* Don't make global, 
+because there are li's in the widgets and nav, e.g. account.php */ {
+    padding-bottom: 0.5rem;
+}
+
+
+
+/* p-b-s */
+/* Base > Elements */
+.radio-container,
+.form-element.remember-me,
+/*.form-element*/ .checkbox,
+.form-label,
+.container .label, /* e.g. Labels on search page [canrt.php?m=search]. Specific to .container so we don't affect the Design Wizard (Admin > Design > Design Setup Wizard) */
+/* Base > Elements > Tables */
+.responsive-tables td, /* Based on >> account.php?m=order_history */
+/* Module > Misc */
+/* Based on homepage email reminders */
+.reminders,
+.msrp-container, /* e.g. Product Detail where MSRP is under the normal price */
+.message--form, /* e.g. checkout.php?m=bill '* Denotes a required field' */
+.blurb-top,
+.msrpMessage, /* e.g. widgets like New Arrivals, Recently Viewed, etc. */
+#recaptcha_widget_div, /* e.g. >> /login.php?m=create_account */
+.clickableImage,
+.compare-table-description:before /* e.g. >> cart.php?m=product_compare */,
+.noItems, /* e.g. New Arrivals widget, "No new arrivals to display" */
+.review,
+/* Module > Buttons */
+.btn-group:not(.btn-group--cart), /* e.g. Featured Products widget */
+/* Module > Messages */
+.message--error, /* Based on >> checkout.php?m=fastcheckout "XXX, you are now logged in" */
+/* Module > Rating */
+.rating-overall,
+/* Base > Elements > Forms */
+.form-element--offset, /* e.g. Checkbox "This information is the same as the Ship To Address" checkout.php?m=billing */
+label .link, /* e.g. Poli payment type on >> checkout.php?m=payment */
+/* Module > Content e.g. cart.php?m=knowledgebase_detail&id=1 */
+.content-middle img,
+/* Module > Footer */
+.footer .title,
+.footer li,
+/* Module > Grid */
+.grid-options,
+.item-name--product,
+.checkbox-container,
+.body .photo, /* e.g. Featured Products widget "View All Featured" 
+button Tighter padding because it's flush with a 'View All' button */
+/* input[name=search], */ /* Affects search widget on mobile */
+/* Module > Product Grid > Category List Specific e.g.
+>> /cart.php?m=product_list&c=CATEGORY_ID */
+/* Module > Products > Related */
+.products-related .title a,
+/* Module > Rating */
+.rating__number,
+/* Module > Widgets */
+.widget__cart-items,
+#content-left h3,
+#content-right h3,
+#widgetBlogCategories li, /* More space for lists with icons */
+#widgetBlogTags li,
+/* Module > Widgets > Search */
+#widgetSearch .field, /* To separate the search box and 'Advanced Search Logic' */
+/* Module > Widgets > Polls */
+.widget--poll p,
+.widget--poll ul,
+#content-left .title,
+#content-right .title,
+/* Plugins > Nivo Slider */
+body .nivo-caption,
+/* Page > Account Info */
+.account-info dt, /* Headings like 'Reward Points' */
+/* Page > Blog > Individual Post > Replies */
+.article-post__comment-date,
+/* Page > Category Protected */
+.pageNote + div,
+/* Page > Compare Table */
+.compare-table-name a,
+/* Page > Customer Home, account.php?m=page_customer_home */
+.page-customer_home .page-sub-title, /* Default is too large,
+but don't change default because it's right for pages like checkout.php?m=fastcheckout */
+/* Page > Fast Checkout >> checkout.php?m=payment */
+#shipping_div, /* =JFG. Not sure if this is truly unique, comes up under TBD */
+/* Page > Home > Top Sellers */
+.top_sellers .page-title,
+/* Page > Product Comparison >> /cart.php?m=product_compare */
+.compare-table-price .listPrice,
+.product-image-caption,
+.clickableContainer img.photoClass, /* Admin > Manage Products > click on a single product > Variants > Personalizations > add Clickable images */
+/* Page > Product Detail > Reviews */
+.review__author,
+/* Page > Subscribe (Newsletter) >> /account.php?m=subscribe */
+.subscribe .form-element,
+/* Page > View Cart > Gateway Buttons >> cart.php?m=view */
+.content-middle .btn-group--gateway form,
+.item-options /* e.g. when you add a 
+gift certificate to the cart via cart.php?m=gift_certificates */ {
+    padding-bottom: 0.7rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Page > Home */
+.page-home form[name="ds_products"] h1 {
+    padding-bottom: 0.7rem;
+}
+/* 768 + */
+@media screen and (min-width: 48em) {
+    .p-b-s--mq_768_up,
+    /* Page > Product Detail e.g. >> /cart.php?m=product_detail&p=35 */
+    .product-price-container /* The main price */ {
+        padding-top: 0.7rem;
+    }
+}
+
+/* p-t-s */
+/* Base > Elements */
+img + p, /* e.g. >> cart.php?m=knowledgebase_detail&id=1 */
+textarea, /* Should be safe e.g. Knowledge base cart.php?m=knowledgebase_detail&id=1
+leave a reply to a blog post */
+/* Module > Misc */
+.description--category, /* Tweak */
+.helper-text, /* e.g. e.g. Product Detail "(Max 25 Characters)". =JFG. Try the Pillar Table product in my local db */
+.message--form, /* e.g. checkout.php?m=bill '* Denotes a required field' */
+#recaptcha_widget_div, /* e.g. >> /login.php?m=create_account */
+.side-container, /* e.g. >> /account.php */
+.cart-amount ul, /* e.g. Fast Checkout >> checkout.php?m=fastcheckout */
+/* input[name=search], */ /* Removed because it affected the Search widget on mobile */
+/* Module > Buttons */
+.btn-group.btn-group--gateway,
+/* Module > Content e.g. cart.php?m=knowledgebase_detail&id=1 */
+.content-middle img,
+/* Module > Footer */
+.copyright a,
+/* Module > Grid */
+.grid-options,
+/* Module > Messages */
+.message--error, /* Based on >> checkout.php?m=fastcheckout "XXX, you are now logged in" */
+/* Module > Product Grid > Category List Specific */
+.grid--category-item-name,
+/* Page > Comparison Table */
+.compare-table td + .remove, /* Put a bit of space between "Product Description" and the Remove button */
+/* Page > Home */
+.page-home .sort-options, /* Because it's directly below the "Featured Products" type title */
+/* Page > Password Reminder >> login.php?m=client_password&email=corecommerce@jaygeorge.co.uk */
+.page-client_password .form-element, /* Give these a bit of extra spacing */
+/* Page > Product Detail >> /cart.php?m=product_detail&p=35 */
+.sku-info,
+.product-detail-social,
+/* Page > View Cart e.g. cart.php?m=view */
+.gateway-button form,
+/* Page > View Cart */
+.item-options, /* e.g. when you add a gift 
+certificate to the cart via cart.php?m=gift_certificates */
+/* Plugins > Nivo Slider */
+body .nivo-caption {
+    padding-top: 0.7rem;
+}
+/* 525 + */
+@media screen and (min-width: 32.8125em) {
+    .p_t_s--mq_525_up,
+    /* Page > Billing >> checkout.php?m=bill */
+    .bill .checkbox-container /* Specific because 
+    .checkbox-container is used with different padding on other pages */ {
+        padding-top: 0.7rem;
+    }
+}
+
+/* 680 + */
+@media screen and (min-width: 42.5em) {
+    .p_t_s--mq_680_up,
+    /* Page > Login */
+    #login strong {
+        padding-top: 0.7rem;
+    }
+}
+
+/* m-b-s */
+/* Base > Elements > Input */
+#calculateShippingLink,
+#calculateTaxLink,
+/* Module > Misc */
+/* e.g. Deal of the Day */
+.countdown,
+.results__count, /* e.g. cart.php?m=knowledgebase_list&kbCatID=1 */
+.points, /* e.g. >> account.php?m=reward_history&asc=asc&sort=0& */
+.sdetails, /* e.g. Details Button In 'Featured Products' */
+.grid-function-buttons .button /* e.g. 'Compare' and 'Add All Items To Cart' on cart.php?m=search_results */,
+/* Module > Messages */
+.message--error, /* Based on >> checkout.php?m=fastcheckout "XXX, you are now logged in" */
+/* Module > Nav */
+.js-req-element-textstr-container,
+/* Module > Pagination */
+#productPagination .button /* e.g. cart.php?m=search_results */,
+/* Module > Widgets */
+#content-left input[type="text"],
+#content-right input[type="text"],
+/* Page > Blog > Individual Post e.g. >> /cart.php?m=blog_post_detail&id=1 */
+.blog_post_detail h4.page-sub-title,
+/* Page > Confirm Order Information >> /checkout.php */
+.confirm-product,
+/* Page > View Cart >> /cart.php?m=view */
+.view-cart__item .item-qty, /* Input box */
+.thumb {
+    margin-bottom: 0.7rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Base > Elements > Input */
+/* Small fields e.g. Credit Card Exp. Date */
+input[name="expirationDate"],
+input[name="CVV2"],
+/* input[type="checkbox"],*/ /* Based on >> /checkout.php?m=payment. Cancelled on 2013-11-04 because it should match radio buttons. 
+There shouldn't be a need for this now because checkbox-container should be wrapped around it */
+/* .checkout-input-radio label */ /* e.g. 'Payment Type' 
+label. I removed this because it affected checkout.php?m=payment, 
+where we have both the checkbox-input and label, creating too much padding */
+input[value="Back to Homepage"], /* e.g. Order Complete page (you'll have to go through the checkout to get to this) */
+/* Page > Create Account > Payment Information */
+input[name="couponCode"], /* Tweak; Extra space for coupon code */
+/* Page > Home */
+.page-home form[name="ds_products"] h1,
+/* Page > Knowledgebase */
+#knowledgebase select[name="rating"],
+/* Page > Product Detail */
+#productReviewsAdd input[type="submit"] /* Save Product Review button */ {
+    margin-bottom: 0.7rem;
+}
+
+/* 525 + */
+@media screen and (min-width: 32.8125em) {
+    .m-b-s--mq_525_up,
+    input[name="eventDate"] {
+        margin-bottom: 0.7rem;
+    }
+}
+
+/* m-t-s */
+/* Base > Elements */
+label + .btn, /* e.g. when it's not separated by a .form-element like on >> checkout.php?m=fastcheckout, cart.php?m=gift_cert_balance */
+/* Module > Misc */
+.continue-shopping /* e.g. cart.php?m=view, when the cart is empty */,
+.message--form, /* For when errors follow "Denotes a required field" e.g. >> checkout.php?m=billing */
+/* Page > Create Account > Payment Information */
+/* Div That Wraps Around Credit Card Type, Half Way Down The Page */
+#nonPaymentTypeDiv,
+/* Page > Knowledgebase */
+#knowledgebase textarea, /* Comments */
+#knowledgebase select[name="rating"],
+/* Page > Product Detail > Quantity Pricing */
+.item-qty-pricing,
+/* Page > View Cart > >> cart.php?m=view */
+.view-cart__item .item-qty /* Input box */ {
+    margin-top: 0.7rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Base > Element > Input */
+td input[type="button"] + input[type="button"], /* =JFG. In table cells
+where there isn't enough room e.g. Mini cart widget */ {
+    margin-top: 0.7rem;
+}
+
+
+
+/* p-b-s-1 */
+/* Base > Elements */
+p, /* e.g. cart.php?m=contact_us */
+/* Module > Misc */
+.price,
+.field,
+.compare,
+/* e.g. Page > Product Detail Detail, cart.php?m=product_detail&p=57&lastAddedItemId=123 */
+.product-details .product-detail-field,
+body .heading-radio,
+/* e.g. locked category like http://corecommerce-dev-fashionista.com/Accessories/ */
+.pageNote,
+.product-list-item-price, /* e.g. in the Featured section $25.99 line */
+/* Module > Buttons */
+.btn-group--social, /* e.g. product Detail > share on Facebook, etc. */
+/* Module > Header */
+.header-search-container,
+/* Module > Headings */
+.page-title,
+/* Module > Widgets */
+.item-price, /* Pretty sure this needs to be more specific, 
+but for now e.g. widgets / featured products */
+/* Page > Blog > All */
+#topOptions, /* e.g. 'Displaying 1 - 2' */
+/* Page > Confirm Order Information */
+.confirm-product,
+.responsive-tables--confirm-order,
+/* Page > Home */
+.home-content-top, /* When the "Body" has text in the admin > Homepage Design Options */
+/* Page > My Account >> /account.php */
+.page-customer_home .page-title, /* Smaller than usual */
+/* Page > Product Detail */
+/* .page-product_detail */ #productPhotos,
+.personalization-swatch, /* When you add product swatches */
+/* Page > Search Results > Registry */
+#pageNote, /* No items matched your search terms */
+/* Page > Subscribe (Newsletter) - account.php?m=subscribe&email=<mailID> */
+.subscribe .logout {
+    padding-bottom: 1.162rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Page > Comparison Table */
+.compare-table td:last-child /* Should be the td with "Remove" in it */,
+/* Page > View Cart >> /cart.php?m=view */
+.view-cart-product:not(.view_cart_product--custom_fee) td:last-child /* Should be the td with "Remove" in it */,
+.responsive-tables--wishlist td:last-child /* Should be the td with "Remove" in it */ {
+    padding-bottom: 1.162rem;
+}
+
+/* 570 + */
+@media screen and (min-width: 35.625em) {
+    .p-b-s-1--mq_570_up,
+    /* Plugin > Nivo Slider */
+    body .nivo-caption {
+        padding-bottom: 1.162rem;
+    }
+}
+
+/* 680 + */
+@media screen and (min-width: 42.5em) {
+    .p-b-s-1--mq_680_up,
+    /* Wrapper Around Existing Customers Section */
+    .login-existing,
+    /* Page > Fast Checkout (When Not Logged In) */
+    .existing_customer,
+    .new_customer {
+        padding-bottom: 1.162rem;
+    }
+}
+
+/* p-t-s-1 */
+/* Base > Elements > Forms */
+.content-middle label img,
+/* Module > Misc */
+.side-container__section, /* e.g. >> /account.php */
+.my_account_address, /* e.g. >> /account.php?m=order_detail&oNum=1379500086-861 */
+.confirm-number + .checkout-btn, /* e.g. checkout.php 'Submit My Order' button */
+/* Module > Reviews */
+.form-element.review-add__save-review, /* e.g. Product Detail */
+/* Page > Comparison Table */
+.compare-table-name,
+/* Page > Confirm Order Information */
+.confirm-product,
+.responsive-tables--confirm-order,
+/* Page > Home */
+.page-home #content,
+#extraDetails,
+/* Page > View Cart */
+.item-name {
+    padding-top: 1.162rem;
+}
+/* 570 + */
+@media screen and (min-width: 35.625em) {
+    .p_t_s_1--mq_570_up,
+    /* Plugin > Nivo Slider */
+    body .nivo-caption {
+        padding-top: 1.162rem;
+    }
+}
+
+/* m-b-s-1 */
+/* Module > Misc */
+.step-number,
+.button, /* 2013-10-16 Based on login.php?m=password&email= (mobile buttons), older comment = e.g. Repeat This Order button, My Account (Orders) account.php?m=order_detail&oNum=1379500086-861 */
+/* Page > Blog > Individual Post e.g. >> /cart.php?m=blog_post_detail&id=1 */
+.blog_post_detail textarea, /* Leave A Reply > Comment */ 
+/* Page > Login */
+.login-form a.sublink, /* Forgot Password button at login.php?m=client_login */
+/* Page > Login > Reminder */
+/* .btn-group a:first-child, */ /* Return To Login */
+/* Page > Login > New Customer */
+.login-new,
+/* Page > My Account >> /account.php */
+.account-info__section,
+.page-customer_home .page-sub-title,
+/* Page > Order Complete */
+/* Page > Product Detail */
+.btn-group--cart input,
+/* Page > Search >> /cart.php?m=search */
+.search select /* Override default select value */ {
+    margin-bottom: 1.162rem; /* s-1 */
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Base > Elements > Input */
+.form-element--buttons input[type="submit"] /* e.g. when 'Update' is followed by 'Back To My Account' on Shipping, account.php?m=change_shipping */ {
+    margin-bottom: 1.162rem; /* s-1 */
+}
+
+/* m-t-s-1 */
+/* Module > Misc */
+p + a, /* e.g. Add to Wishlist button >> /account.php?m=wishlist_view */
+.page-errors + *, /* e.g. >> login.php?m=client_password&email=corecommerce@jaygeorge.co.uk */
+/* Page > Customer Login */
+.form-side, /* >> /login.php?m=client_login */
+/* Page > View Checkout */
+.btn-group--cart .view-cart-or {
+    margin-top: 1.162rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Module > Misc */
+p + input[value="Back to My Account"] /* e.g. /account.php?m=reward_history */ {
+    margin-top: 1.162rem;
+}
+
+
+
+/* p-b-s-2 */
+/* Module > Footer */
+.footer .actionItems,
+/* Page > Product Detail */
+/* Module > Product Grid > Category List Specific */
+.category-drop-down,
+/* Module > Products > Related */
+.products-related .item-price--product {
+    padding-bottom: 1.35rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Page > Search */
+.header-banner #searchFormKeywords /* =JFG. Don't want to
+affect cart.php?m=search Search Keywords: */ {
+    padding-bottom: 1.35rem;
+}
+
+/* Exceptions */
+/* Page > Subscribe >> /account.php?m=subscribe */
+.subscribe .form-element--buttons {
+    padding-top: 0;
+}
+
+/* p-t-s-2 */
+/* Page > Product Detail */
+/* .page-product_detail */ .back-to-list {
+    padding-top: 1.35rem;
+}
+
+.m-b-s-2,
+/* Page > Login */
+.login-btn, /* Login button */
+/* Page > Product Detail */
+/* .page-product_detail */ .back-to-list {
+    margin-bottom: 1.35rem;
+}
+
+.m-t-s-2,
+/* Page > Create Account > Billing >> /checkout.php?m=payment */
+.checkout-input input[type="text"] ~ label /* e.g. for Address 1 + Address 2 */ {
+    margin-top: 1.35rem;
+}
+
+
+
+/* p-b-m */
+.product-detail-group,
+.sort-options, /* e.g. cart.php?m=search_results, Search Results */
+dd, /* e.g. Based on account.php */
+/* Base > Elements > Forms */
+.form-element,
+.calculate, /* e.g. >> checkout.php?m=fastcheckout */
+/* Module > Misc */
+.logo,
+.confirm-text, /* e.g. Confirm Order page */
+.blurb-middle,
+.article-list li, /* e.g. >> cart.php?m=knowledgebase_list&kbCatID=1 (might need to be more specific and use article-list--kb) */
+.field-value--price, /* e.g. >> /checkout.php */
+.cart-review .page-sub-title, /* e.g. >> /checkout.php?m=fastcheckout */
+.links-list--account-infos, /* e.g. account.php, My Account */
+.message--note, /* You'll need to go to the end of the checkout process to get to this */
+/* Module > Content */
+.content-middle ul, /* e.g. checkout.php?m=fastcheckout */
+/* Module > Footer */
+.footer,
+.copyright,
+/* Module > Grid */
+.grid-options__sort,
+/* Module > Messages */
+.message-container, /* Based on Product Detail in the Custom Fields tab "Call/Email for pricing */
+/* Module > Product Grid > Category List Specific e.g.
+>> /cart.php?m=product_list&c=CATEGORY_ID */
+.category-image,
+/* Page > Blog > Individual Post >> cart.php?m=blog_post_detail&id=1 */
+#post-date-author dd,
+#post-reply h4, /* Leave A Reply */
+/* Page > Checkout >> /checkout.php */
+.subtotal,
+/* Page > Checkout > Payment >> /checkout.php?m=payment */
+#paymentOpts > label:first-child,
+#shipping-method,
+/* Page > Customer Login */
+.client_login .page-sub-title, /* >> /login.php?m=client_login */
+/* Page > Home */
+.page-home .grid-function-buttons, /* e.g. cart.php */
+/* Page > Order Complete */
+.order-complete table, /* You'll need to go to the end of the 
+checkout process to get to this */
+/* Page > Product Detail e.g. >> /cart.php?m=product_detail&p=35 */
+.product-image-caption,
+.product-actions,
+/* .page-product_detail   */ .categoryTitleHeader,
+.product-review-form .page-sub-title,
+/* Page > Search Results */
+.search-info,
+/* Page > View Cart >> /cart.php?m=view */
+.view-cart__item,
+.actions--cart,
+.cart-amounts,
+.btn-group--cart-calculations {
+    padding-bottom: 1.6rem;
+}
+/* 525 + */
+@media screen and (min-width: 32.8125em) {
+    .p-b-m--mq_525_up,
+    /* Base > Elements > Input */
+    .cvn /* e.g. checkout.php?m=fastcheckout */ {
+        padding-bottom: 1.6rem;
+    }
+}
+/* 768 + */
+@media screen and (min-width: 48em) {
+    .p-b-m--mq_768_up,
+    /* Plugin > Nivo Slider */
+    body .nivo-caption {
+        padding-bottom: 1.6rem;
+    }
+}
+/* 1200 + */
+@media screen and (min-width: 75em) {
+    .p-b-m--mq_1200_up,
+    /* Page > Product Detail */
+    #productDescription {
+        padding-bottom: 1.6rem;
+    }
+}
+
+/* p-t-m */
+/* Base > Elements */
+p + h1, /* Create some vertical extra space */
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6,
+/* Module > Misc */
+.logo,
+.confirm-text, /* e.g. Confirm Order page */
+.sort-options,
+.checkout-btn, /* Based on >> /checkout.php?m=payment ("Next" button) */
+/* Module > Buttons */
+p + .btn-group,
+/* Module > Pagination */
+.pagination, /* e.g. >> account.php?m=previously_ordered_items */
+/* Page >> /checkout.php?m=multi_ship_choice */
+#checkoutMultishipChoice,
+/* Page > Fast Checkout > Review */
+.cart-review .responsive-tables,
+/* Page >  Product Detail */
+.product-image-caption,
+.product-detail-description,
+/* Page > Product Detail > Gallery */
+/* #extraDetails */ .share,
+/* .page-product_detail */ #productPhotos,
+/* Page > Product Detail > Reviews */
+#productReviewsAdd .save_product_review,
+.review__rating,
+/* Page > Reminder Removed >> /cart.php?m=remove_reminder&id=35 */
+#reminderRemoved,
+/* Page > Search */
+.page_search .page-content, /* e.g. cart.php?m=search, When blurb-top isn't there */
+.search_results .grid-function-buttons,
+/* Page > View Cart >> /cart.php?m=view */
+.view-cart .responsive-tables,
+.actions--cart {
+    padding-top: 1.6rem;
+}
+
+/* 525 + */
+@media screen and (min-width: 32.8125em) {
+    .p_t_m--mq_525_up,
+    /* Base > Elements > Input */
+    .cvn  /* e.g. checkout.php?m=fastcheckout */ {
+        padding-top: 1.6rem;
+    }
+}
+
+/* 768 + */
+@media screen and (min-width: 48em) {
+    .p_t_m--mq_768_up,
+    /* Plugin > Nivo Slider */
+    body .nivo-caption {
+        padding-top: 1.6rem;
+    }
+}
+
+/* m-b-m */
+/* Base > Elements > Tables */
+table:not(.chartPersonalization), /* Default value based on >> /account.php?m=order_detail&oNum=1381961721-892 */
+/* Module > Misc */
+.clickable-container,
+.edit_shopping_cart_button, /* =JFG. I created this class, feel free to use it else where in the markup as a width constraint e.g. checkout.php?m=fastcheckout */
+.side-container, /* e.g. >> /account.php */
+.btn--view-all, /* e.g. >> /account.php */
+.all-link, /* e.g. to create some extra vertical space 'View All Featured' in the Featured Products widget 
+for some other pages */
+/* Module > Buttons */
+.content-middle .btn--continue, /* Based on the button after "Gift Certificate" on > checkout.php?m=fastcheckout */
+/* Module > Forms */
+.form-side .page-sub-title, /* e.g. >> login.php?m=client_login, checkout.php?m=fastcheckout */
+/* Module > Product Grid */
+.grid, /* e.g. Homepage put some space between Featured, Categories, Top Sellers and the bottom content */
+/* Module > Product Grid > Category List Specific > cart.php?m=product_list&c=CATEGORY_ID */
+.grid--category-item-name, /* This is specifically for when categories have a description (Admin > Inventory > Manage Categories > Description */
+/* Module > Widgets */
+#content-left table,
+#content-right table, /* e.g. Shopping Cart > Detailed */
+/* Page > Blog > Individual Post e.g. >> /cart.php?m=blog_post_detail&id=1 */
+#comment-count,
+/* Page > Contact Us >> /cart.php?m=contact_us */
+.contact_us .breadcrumb, /* e.g. cart.php?m=search. =JFG. Based on account.php?m=order_detail&oNum=1379500086-861, with conditional instances */
+/* Page > Create Account */
+.form-label-100,
+.contact_us_save .breadcrumb, /* e.g. >> /cart.php?m=contact_us_save */
+#knowledgebase .rating,
+/* Category Selection Field */
+#knowledgebase .form-field,
+/* Page > Payment Information > Billing Pages */
+.my-account-billing-shipping-input,
+/* Was previously .content-middle input[type="text"]:not([name="eventDate"]):not([name="search"]),
+but cancelled eventDate because it was affecting account.php?m=customer_edit_registry */
+/* =JFG.
+Don't affect widgets
+Not for the CVV2 field on checkout.php?m=fastcheckout
+Not for the Event Date field on account.php?m=customer_edit_registry
+Not for the searchbox in the widgets */
+/* Page > Product Comparison */
+.compare-table-thumb,
+/* Page > Search >> /cart.php?m=search */
+.search .breadcrumb,
+/* Plugins > Nivo Slider */
+.theme-default .heroImage {
+    margin-bottom: 1.6rem;
+}
+.lt-ie9 .content-middle input { /* IE8 doesn't support the advanced selector above */
+    margin-bottom: 1.6rem;
+}
+
+.m-t-m,
+/* Module > Buttons */
+.btn--back-to-list,
+/* Module > Misc */
+.address-text .btn--edit /* e.g. >> /account.php */ {
+    margin-top: 1.6rem;
+}
+
+
+
+/* p-b-l */
+/* Base > Elements */
+.content-middle form, /* Needed for IE8 >> Product Detail. .content-middle because we don't want to affect widgets */
+/* Module > Misc */
+.results__count, /* e.g. cart.php?m=knowledgebase_list&kbCatID=1 */
+.address-text, /* e.g. /account.php?m=order_detail&oNum=1379500086-861 */
+.categories, /* e.g. cart.php?m=knowledgebase */
+.search-form,
+.points, /* e.g. >> account.php?m=reward_history&asc=asc&sort=0& */
+.blurb-bottom,
+.existing_customer, /* Based on >> checkout.php?m=fastcheckout (when not logged in) */
+.new_customer,
+.date, /* e.g. >> cart.php?m=knowledgebase_detail&id=1 */
+.btn-group--pagination, /* e.g. Home 'Show More' on feature products, when there is over 12 */
+.instructions, /* e.g. checkout.php?m=fastcheckout */
+.button_group,
+.account-info, /* e.g. account.php, My Account */
+.page-content /* e.g. cart.php?m=contact_us, Page > Contact Us */,
+.grid-function-buttons, /* e.g. cart.php */
+.products-related,
+/* Module > Breadcrumbs */
+.breadcrumb /* e.g. cart.php?m=search */, /* Based on Page > Order Confirmation */
+/* Page > Billing >> checkout.php?m=bill */
+.bill .checkbox-container, /* Specific because .checkbox-container is 
+used with different padding on other pages */
+/* Page > Change Password >> account.php?m=change_password */
+.page_change_password p, /* "Please enter your current and your new password" This is very generic, might be dangerous */
+.page_client_password p, /* >> login.php?m=client_password&email= */
+/* Module > Misc */
+/* Page > My Account >> /account.php */
+/* Module > Content */
+/* .content-middle, Don't do this because sometimes we use
+diagonal linear gradients that run at the bottom of the page that run into the footer.
+Putting padding underneath them causes them to end abruptly e.g. cart.php?m=view */
+.widget, /* =JFG. Specifically div. to avoid extra padding on forms */
+.logout, /* e.g. >> /account.php?m=previously_ordered_items */
+/* Module > Footer */
+.footer__column,
+/* Module > Login */
+.fastcheckout-login-sentence,
+/* Module > Pagination */
+.pagination,
+/* Page > Blog > Individual Post >> cart.php?m=blog_post_detail&id=1 */
+#post-date-author,
+.article-post__body,
+/* Page > Blog > Individual Post > Replies */
+.article-post__comment-body,
+/* Page > Blog > List >> cart.php?m=blog_post_list */
+.article-list__post,
+/* Page > Confirm Order Information >> /checkout.php */
+.address-text,
+/* Page > Fast Checkout - checkout.php?m=fastcheckout */
+.form-side__section /* e.g. #billing-address, #payment-method, etc.  */,
+/* Page > Product Detail */
+.description--product-detail,
+.personalization-chart .responsive-tables,
+.lastPersonalizationContainer,
+.content-middle .links-list--account-infos /* Larger than normal .content-middle ul */ {
+    padding-bottom: 2.1rem;
+}
+/* Exceptions */
+table form { /* e.g. account.php?m=wishlist_view */
+    padding-bottom: inherit;
+}
+
+/* p-t-l */
+/* Module > Misc */
+.blurb-bottom,
+.article-list__post + .article-list__post,
+/* Module > Buttons */
+.btn-group--pagination,
+/* Page > Home */
+.slider-is-active .home-content-top,
+/* Page > Fastcheckout >> checkout.php?m=fastcheckout */
+.cart-review, /* Push the review section of the fastcheckout away a little to signify it's importance */
+/* Module > Footer */
+.footer,
+.has-widgets .footer-container,
+/* Page > Product Detail > Reviews */
+.feedback-form {
+    padding-top: 2.1rem;
+}
+
+/* m-b-l */
+/* Module > Misc */
+.message--form, /* e.g. checkout.php?m=bill '* Denotes a required field' */
+.message--note, /* Based on >> login.php?m=password&email= */
+.my_account_address, /* e.g. >> /account.php?m=order_detail&oNum=1379500086-861 */
+.product-details, /* e.g. Single Product Detail, just before reviews, cart.php?m=product_detail&p=57&lastAddedItemId=123 */
+.edit-cart, /* e.g. "Edit Shopping Cart" checkout.php?m=fastcheckout */
+/* Module > Buttons */
+.content-middle .btn--submit, /* e.g. >> checkout.php?m=fastcheckout */
+/* Module > Buttons e.g. Page > Product Detail mobile */ 
+div > /* Specifically following a div because we don't want this button decoration for tables */ .btn.btn--add-to-cart,
+/* Module > Product Grid > Category List Specific */
+.category-drop-down,
+/* Page > Blog > Individual Post >> cart.php?m=blog_post_detail&id=1 */
+.article-post__body,
+/* Page > Fast Checkout >> checkout.php?m=fastcheckout */
+.content-middle .btn--continue,
+/* Module > Header */
+.header-banner,
+/* Page > Home */
+.home-top-content,
+/* Page > Login */
+/* Or */
+#login strong {
+    margin-bottom: 2.1rem;
+}
+/* Separate Selector For IE8 - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+/* Base > Elements */
+table:not(.chartPersonalization) /* Default value based on >> /account.php?m=order_detail&oNum=1381961721-892 */ {
+    margin-bottom: 2.1rem;
+}
+
+/* m-t-l */
+/* Plugins > Gallery */
+.strip_wrapper,
+.btn--subscribe, /* e.g. account.php */
+/* Module > Errors */
+.page-errors + div:not(.page-errors) /* e.g. when a field follows an error code. We need to exclude error codes following error codes */,
+/* Page > Order Complete */
+.order-complete .page-sub-title {
+    margin-top: 2.1rem;
+}
+
+
+
+.p-t-l-3,
+.page-tabs__content /* Based on >> login.php?m=client_login */ {
+    padding-top: 3rem;
+}
+
+
+
+/* p-b-l-2 */
+/* Page > Fast Checkout - checkout.php?m=fastcheckout */
+.login-existing {
+    padding-bottom: 4.2rem;
+}
+/* 400 + */
+@media screen and (min-width: 25em) {
+    .p-b-l_2--mq_400_up,
+    /* Page > View Cart */
+    body .view-cart table { /* Don't affect mini cart widget */
+        padding-bottom: 4.2rem;
+    }
+}
+
+.m-b-l-2,
+/* Page > Order Complete */
+.order-complete .page-sub-title {
+    margin-bottom: 4.2rem;
+}
+
+/* m-t-l-2 */
+.my-account-addresses /* e.g. >> /account.php */
+/* .footer-container /* Cancelled this because we
+should instead put padding on the element above e.g. 
+this margin will ruin the gradient on #content-right while the widgets are
+on the bottom. Before deleting this checkout >> /cart.php?m=contact_us, 
+View Cart >> checkout.php?m=fastcheckout */ {
+    margin-top: 4.2rem;
+}
+
+/* 900 + */
+@media screen and (min-width: 56.25em) {
+    /* m-b-l-2-mq-900-up */
+    .product-details /* e.g. Single Product Detail, just before reviews, cart.php?m=product_detail&p=57&lastAddedItemId=123 */ {
+        margin-bottom: 4.2rem;
+    }
+}
+
+
+
+
+/* GROUP MODULE / MISC
+=================================================== */
+.description {
+    clear: both; /* e.g. Product detail where we want to make sure the description is cleared. Needs to be clear: both;, .l-row won't work */
+}
+
+.item-price .message-container--pricing {
+    padding-left: 0; /* e.g. Related Products at the bottom of a product detail page (=JFG. Try Pillar table on my local db) */
+}
+
+.compare {
+    display: block;
+    clear: both; /* e.g. "Recently Viewed" widget, compare checkbox */
+}
+
+.rating__number { /* Based on homepage */
+    position: absolute;
+}
+
+.item-teaser p {
+    padding-bottom: 0; /* Tighten spacing between description and rating on homepage .grid */
+}
+
+.clickableText a { /* e.g. Page > Product Detail */
+    display: inline-block;
+}
+
+.forgot_password { /* e.g. >> login.php?m=client_login */
+    display: inline-block;
+    padding-left: 0;
+}
+
+/* .compare-table-price */ .listPrice { /* Used to make this more specific, but .listPrice is also used in the widgets too */
+    text-decoration: line-through;
+}
+
+.recaptchatable input[type="text"] {
+    height: auto; /* Prevent from inheriting the input height: 38px; fixed value for Firefox in theme.scss */
+}
+
+.msrpMessage { /* e.g. widgets like New Arrivals, Recently Viewed, etc. */
+    clear: both;
+}
+
+.subtotal /* e.g. >> /checkout.php. 
+I know this is also used in the widgets too, but hopefully they don't clash */ {
+    display: inline-block;
+}
+
+.step-number {
+    display: block;
+    text-align: center;
+    background-image: url(../img/overlay.png);
+}
+
+
+
+
+.address-text { /* e.g. >> /account.php */
+    line-height: 1.75;
+}
+.address-text .button {
+    margin-bottom: 0;
+}
+
+
+
+
+.cart-amount ul { /* e.g. checkout.php?m=fastcheckout */
+    list-style: none;
+    padding-left: 0;
+}
+
+.cvn img { /* e.g. checkout.php?m=fastcheckout */
+    padding-top: 0; /* Cancel .content-middle default padding */
+    padding-bottom: 0;
+}
+
+
+
+
+.sort-options {
+    text-align: center;
+}
+.sort-options select { /* e.g. homepage Featured Products */
+    margin-bottom: 0;
+}
+
+
+
+body .popup { /* e.g. CVV2 Code field (checkout.php?m=fastcheckout) */
+    width: 90%; /* Prevent overflow */
+}
+
+.compare .checkbox-container /* e.g. comparing products like in
+the #content-right "You Recently Viewed" widget */ {
+    padding-bottom: 0;
+}
+
+.all-link { /* e.g. Featured Widget 'View All Featured' button */
+    float: left;
+    clear: both;
+}
+
+
+/* GROUP MODULE / MESSAGES
+=================================================== */
+.message {
+    line-height: 1.7; /* Based on Confirm Order Information */
+    border-radius: 5px;
+}
+.message--form, /* e.g. >> checkout.php */
+.message--pricing, /* e.g. >> Wicker-Basket.html */
+.message--instruction, /* e.g. >> cart.php?m=gift_certificates */
+.message--note  /* e.g. Confirm Order */,
+ .content__side .message /* e.g. Vendors widget "No VENDors found" */ {
+    color: black;
+}
+
+.message--note,
+.message--pricing,
+.message--pre-sale {
+    background-color: #FFF5BE;
+    color: #444;
+}
+
+
+
+/* GROUP MODULE / RATING
+=================================================== */
+.product-rating-overall .field-label {
+    padding-left: 0; /* Based on tabbled navigation (Product Reviews) on Product Detail e.g. Pillar Table dummy product */
+}
+
+.rating__number {
+    padding-top: 0.55rem; /* Custom to line up with the rating image */
+}
+
+
+
+
+/* GROUP MODULE / ACCOUNT FORMS
+=================================================== */
+.blurb {
+    clear: both; /* Needed for >> checkout.php?m=fastcheckout */
+}
+
+
+
+/* GROUP MODULE / TRANSITIONS
+=================================================== */
+/* transition-fast */
+/* Module > Nav */
+.mm-submenu a {
+    transition: all 0.3s ease-in 0s;
+}
+
+
+
+
+/* GROUP MODULE / TABS e.g. Page > Product Detail
+=================================================== */
+/* - 570 */
+@media screen and (max-width: 35.5625em){
+    .page-tabs__label {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+ul.page-tabs {
+    padding-bottom: 0;
+    clear: both;
+}
+
+.page-tabs li {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 1px; /* So we can see the top of the tabs */
+    padding: 15px 24.27px; /* Arbitrary vertical padding x 1.618 for horizontal padding */
+    cursor: pointer;
+    border: 1px solid #444;
+    border-bottom: 0;
+}
+
+.page-tabs .active,
+.productTab-selected {
+    background-color: #FFF;
+    position: relative;
+}
+
+.page-tabs .active:before,
+.productTab-selected:before {
+    border-top: 4px solid #444; /* Black-off */
+    content: "";
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.page-tabs .active:after,
+.productTab-selected:after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.page-tabs__content {
+    border-top: 2px solid #444;
+}
+
+.product-tab-description { display: block; }
+
+
+
+
+/* GROUP MODULE / TABS / ICONS
+=================================================== */
+.page-tabs #facebook:before {
+    content: "\e602";
+}
+.page-tabs #twitter:before {
+    content: "\e60d";
+}
+.page-tabs #google:before {
+    content: "\e60c";
+}
+
+/* - 910 */
+@media screen and (max-width: 56.8125em){
+    .page-tabs #facebook .page-tabs__label,
+    .page-tabs #twitter .page-tabs__label,
+    .page-tabs #google .page-tabs__label {
+        display: none;
+    }
+}
+/* 910 + */
+@media screen and (min-width: 56.875em) {
+    .page-tabs #facebook:before,
+    .page-tabs #twitter:before,
+    .page-tabs #google:before {
+        padding-right: 0.6rem;
+    }
+}
+
+
+
+
+/* GROUP MODULE / GRID
+=================================================== */
+.page_search_results .grid-options,
+.search-info /* Search Results */ {
+    text-align: center;
+}
+
+.grid--cross-sell {
+    font-size: 0.9em; /* Slightly smaller */
+}
+
+.grid-options__sort-filters .btn--go {
+    font-size: 0.9em; /* Completely custom */
+    padding: 0.3rem 0.7rem;
+    padding-bottom: 0.25rem;
+    border-radius: 3px!important;
+}
+
+
+
+
+/* GROUP MODULE / GRID / CATEGORIES
+=================================================== */
+.grid--category .grid__item {
+    text-align: center;
+}
+
+.category-image--top,
+.category-image--bottom {
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+/* GROUP MODULE / NAV
+=================================================== */
+.top-nav-wrapper {
+    clear: both;
+}
+
+.mm-submenu *,
+.dd-submenu * { /* Make sure it doesn't inherit the @include centered-nav */
+    text-align: left;
+}
+
+/* 500 + */
+@media screen and (min-width: 31.25em) {
+    .top-nav div[id*="topNavTab"] a, /* Standard nav */
+    .top-nav > ul > li > a /* Dropdown nav > 1st level */
+    /* Page > Product Detail */ {
+        font-size: 1.2rem; /* Arbitrary. Needs to be rem rather than em for Standard Nav */
+    }
+}
+
+/* Mega Menu */
+a.element-title { /* Mega menu navigation titles that have links */
+/*  text-decoration: underline; */ /* Cancelled this becausit doesn't look good */
+}
+/* GROUP MODULE / NAV / MOBILE
+=================================================== */
+.nav-mobile {
+    position: absolute;
+    z-index: 2; /* Above site title */
+    top: 0;
+    right: 0;
+}
+
+.nav-mobile button {
+    /* =JFG. Custom padding */
+    padding-top: 0.7rem;
+    padding-right: 0.9rem;
+    padding-left: 0.9rem;
+    padding-bottom: 0.7rem;
+    line-height: 0;
+}
+body /*ul*/.second-level-submenu {
+    top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+/* GROUP MODULE / NAV / DECORATION
+=================================================== */
+.line-splitter {
+    padding-top: 3px; /* =JFG. Custom */
+    /* =JFG. These can be set in the mega menu in the backend, so we won't bulldoze */
+/*  border-top: $border_grey!important; */ 
+/*  border-bottom: $border_grey!important; */
+}
+
+
+
+
+/* GROUP MODULE / PRODUCTS
+=================================================== */
+.item-name--product {
+    color: black;
+}
+/* GROUP MODULE / PRODUCTS / RELATED
+=================================================== */
+.products-related .title a {
+    float: right;
+}
+
+/* - 400 */
+@media screen and (max-width: 24.9375em){
+    .products-related .hdr-title-text {
+        font-size: 29px; /* =JFG. Custom fixed font-size for mobile to fit 'Related Products' on one line */
+    }
+}
+
+
+
+
+/* GROUP MODULE / PRODUCT COMPARISON e.g. cart.php?m=product_compare
+=================================================== */
+.compare-table-name img { /* e.g. Star Rating */
+    display: block;
+}
+
+.compare-table-description {
+    clear: both;
+}
+
+.compare-table-description:before {
+    display: inline-block;
+}
+
+
+
+
+/* GROUP MODULE / GRID / CATEGORY LIST SPECIFIC e.g. cart.php?m=product_list&c=CATEGORY_ID
+=================================================== */
+.grid--category-item img {
+    padding-top: 0; /* Cancel default .content-middle img height, 
+    we don't need it / makes things too spaced out */
+}
+
+.grid--category-item-teaser p {
+    padding-right: 0; /* The grid is already padded so we don't need this */
+    padding-left: 0;
+}
+
+.caption--image {
+    display: inline-block; /* So padding is effective */
+}
+
+.category-image {
+    display: inline-block;
+}
+
+.grid--category-item {
+    text-align: center; /* Make categories center https://corecommerce.jira.com/browse/CC-1865 */
+}
+
+
+
+/* GROUP PLUGINS / NIVO SLIDER
+=================================================== */
+.js_req_overlay_wrapper {
+    position: relative;
+    background-image: url(../img/overlay.png);  /* I did try and use
+    http://lea.verou.me/css3patterns/#checkerboard but since the pattern I want to use
+    is very fine it wasn't possible usingthis method this method */
+    /* z-index: 6; */ /* Minimum needed */
+}
+
+.nivoSlider + .nivo-controlNav {
+    padding-top: 0; /* The nivo slider has padding bottom in case there is one slide. 
+    If there are two slides and the controlNav appears, we do not want it adding to the bottom padding */
+}
+
+/* =JFG. Change the default theme to match the style of our CoreCommerce theme */
+.theme-default .nivoSlider img { /* Cancel default .content-middle img padding */
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* TODO Check If This Still Looks Ok With Other Images */
+.nivoSlider img {
+   min-height: 200px; /* Make the image take up a decent vertical height */
+   box-sizing: content-box;
+}
+
+#homepageNivoSlider {
+   background-image: none; /* Remove spinning gif */
+}
+
+body .nivo-box,
+body .nivo-slice {
+    width: inherit!important; /* =JFG. Prevent transitions from being disabled */
+    background-color: white; /* So that if there are multiple images the filter that fades them fades onto white instead of the image behind */
+}
+
+.theme-default .nivo-caption {
+    background-color: #eee; /* When rgba is not supported */
+    background-color: rgba(255, 255, 255, 0.65); /* =JFG. Same as above property */
+    color: black;
+    width: 90%;
+    text-align: center;
+    max-width: 35rem; /* Arbitrary */
+}
+
+body .theme-default .nivoSlider {
+    box-shadow: none!important;
+}
+
+.slider-is-active.page-home .container { /* =JFG. This prevents extra height at the bottom of the page, left over from the nivo slider manipulation. 
+    NB this works in -webkit/blink-based browsers e.g. Chrome, Safari and Opera, but not Firefox */
+    height: 0;
+}
+
+
+/* GROUP PLUGINS / NIVO SLIDER / FILTERS
+=================================================== */
+/* .nivoSlider img { */
+     /* still need webkit prefix as of 2013-11-19. http://caniuse.com/#search=filter */
+/*     -webkit-filter:
+        blur(2.5px); */
+    /* future-proof */
+/*      filter:
+        blur(2.5px);
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+} */
+/* 768 + */
+/* @media screen and (min-width: 48em) {
+    .nivoSlider img { */
+         /* still need webkit prefix as of 2013-11-19. http://caniuse.com/#search=filter */
+/*         -webkit-filter:
+            blur(3.5px); */
+        /* future-proof */
+/*         filter:
+            blur(3.5px);
+        opacity: 0.35;
+        filter: alpha(opacity=35);
+    }
+} */
+
+
+
+
+/* GROUP MODULE / WIDGETS / LAYOUT
+=================================================== */
+#content-right,
+#content-left {
+    z-index: 9; /* Needed for when there are multiple slides and #content-right or 
+    #content-left are absolutely positioned above the slider. 1 above the .nivo-caption, which has a z-index of 8 */
+}
+
+#content-right .item-price--product, /* Specific to widgets because I don't want 
+to affect cart.php?m=product_compare */
+#content-left .item-price--product /* e.g. #content-right */ {
+    float: left;
+}
+
+.logoutLink {
+    display: inline-block;
+    clear: both;
+}
+
+.advanced a  {
+    font-style: italic;
+}
+
+/* Widget Input Boxes */
+#widgetSearch input[name="search"],
+#widgetSubscribe input[name="email"] {
+    float: left;
+}
+/* GROUP MODULE / WIDGETS
+=================================================== */
+body .widget__body *:not(.btn):not(table):not(td) { /* Reset inner .widget__body padding since we've applied .l-w-l to .widget__body */
+    padding-left: 0;
+    padding-right: 0;
+}
+/* GROUP MODULE / WIDGETS / WELCOME
+=================================================== */
+#widgetLogin p {
+    font-style: italic;
+}
+/* GROUP MODULE / WIDGETS /  FOOTER
+=================================================== */
+/* Horizontal Image */
+.widgetImages > div {
+    max-width: 100%;
+}
+
+.widgetImages + #widgetFooter {
+    padding-top: 0;
+}
+
+
+
+
+/* GROUP MODULE / PRODUCT LIST
+=================================================== */
+.item-name--product {
+    display: block;
+}
+
+
+
+
+/* GROUP MODULE / BUTTONS
+=================================================== */
+.btn:not(.btn--destruct):not(.btn--nav):not(.btn--inline) {
+    text-decoration: none;
+    border-radius: 0;
+}
+
+.btn--1 {
+    color: white;
+    border: 2px solid #444; /* So its height matches .btn--3 */
+}
+
+.btn--2 {
+    background-color: white;
+    border: 2px solid rgb(228, 228, 228); /* So its height matches .btn-- */
+/*     box-shadow: 0px 0px 3px rgba(0,0,0,0.1); */
+}
+
+.btn--3 {
+    background-color: white; /* To override webkit background colour on input[type="button"] */
+    border: 2px solid #000;
+}
+
+.btn--4 {
+    background-color: black;
+    color: white!important;
+    opacity: 0.5;
+    border-radius: 0;
+}
+
+.btn--inline {
+    border-radius: 3px;
+}
+
+.btn-group {
+    display: inline-block; /* To enable padding e.g. "Submit My Order" button on >> checkout.php?m=fastcheckout */
+}
+/* GROUP MODULE / BUTTONS / UNIQUE
+=================================================== */
+.btn {
+    /*  padding: $v_s/1.2; =JFG. Cancelled dynamic padding, because we don't want the buttons getting too big */
+    /*  padding-bottom: $v_s/1.1; =JFG. Cancelled dynamic padding, because we don't want the buttons getting too big */
+    
+     /* Still use padding on buttons. This should equal the height of inputs (i.e. don't use height, in case the button message goes onto two lines) */
+     padding-top: 9px; /* Vertical values set so they align with input values next to a .btn--1 */
+     padding-bottom: 9px;
+     padding-right: 20px;
+     padding-left: 20px;
+}
+
+.login-btn, /* e.g. >> /checkout.php?m=fastcheckout when not logged in */
+.forgot-password {
+    display: inline-block; /* So we can float "Forgot Password" alongside the login button */
+}
+
+.btn.btn--inline {
+    /* e.g. Coupon Code >> checkout.php?m=fastcheckout */
+    margin-left: -10px;
+    border-radius: 3px;
+    /* Because the go button is flush with the input */
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* PayPal Button */
+.btn-img--paypal-bml {
+    max-width: 150px;
+}
+.btn-img--paypal-bml img {
+    padding-bottom: 0;
+}
+.btn-img--paypal-bml img + img {
+    padding-top: 0;
+}
+
+.btn--nav {
+    position: absolute;
+    z-index: 2; /* Above site title */
+    top: 0;
+    right: 0;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    background-color: white;
+}
+
+.header-search-container .btn--search {
+    padding-bottom: 8px ;/* Custom to match .top-bar input */
+    padding-top: 7px;
+}
+
+input.btn--submit /* e.g. account.php?m=subscribe. Specifically input because this behaves differently with an anchor e.g. the Submit button on checkout.php */ {
+    display: block; /* e.g. Prevent anti-pattern because we don't want a secondary action like "Back to My Account" to be on the right (prime touch position). */
+}
+
+.content-middle table form .btn /* e.g. account.php?m=wishlist_view */ {
+    margin-bottom: 0;
+}
+
+
+
+/* GROUP DECORATION / COLOURS
+=================================================== */
+.bc-black-off,
+.btn--1 {
+    background-color: #444;
+}
+
+/* .c-grey */
+.subtitle,
+.date, /* e.g. >> /cart.php?m=knowledgebase_detail&id=1 */
+.stock-message {
+    color: #AAA;
+}
+.c-grey-dark, /* DNU */
+/* Module > Misc */
+.sale-text, /* e.g. >> cart.php?m=view */
+.pagination, /* e.g. >> /cart.php?m=knowledgebase_list&kbCatID=2 */
+.item-info--product p /* e.g. featured item description on homepage */,
+.item-teaser--category p,
+/* Modules > Widgets > Blog Tags */
+#widgetBlogTags li:before,
+/* Page > Comparison Table >> cart.php?m=product_compare */
+.compare-table-description p,
+/* Page > Product Detail */
+/* #extraDetails */ .sku,
+/* #extraDetails */ .sku-label,
+#productReviewsAddNote,
+/* Page > View Cart >> /cart.php?m=view e.g. when you 
+add a gift certificate to the cart via cart.php?m=gift_certificates */
+.item-options {
+    color: #888;
+}
+.bc-grey-light-2, /* DNU */
+/* Base > Elements > Tables */
+.responsive-tables--confirm-order,
+/* Module > Widgets */
+/* Module > Misc */
+.step-number, /* e.g. checkout.php?m=fastcheckout */
+/* Module > Breadcrumbs */
+/* .breadcrumb, */ /* e.g. cart.php?m=search */
+/* Page > Product Detail */
+#extraDetails {
+    background-color: #f5f5f5;
+}
+.bc-grey-light-3, /* DNU */
+/* Module > Misc */
+.message--form,
+.side-container__section, /* e.g. >> /account.php */
+/* Module > Header */
+.page-not-home .top-bar,
+.slider-is-not-active .top-bar,
+/* Page > Fast Checkout > Review */
+.cart-review .responsive-tables,
+/* Page > Search */
+.page_search .page-content,
+/* Page > View Cart >> /cart.php?m=view */
+.actions--cart {
+    background-color: #FAFAFA;
+}
+
+.c-red,
+/* Base > Elements > Input > Other */
+.required:after {
+    color: #E73D3D;
+}
+.bc-red,
+.message--error {
+    background-color: #E73D3D;
+}
+
+
+
+
+/* GROUP DECORATION / BOX SHADOWS
+=================================================== */
+.bs-b, /* DNU */
+/* Module > Nav */
+.mm-submenu {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+.no-boxshadow .mm-submenu {
+    background-color: #f5f5f5; /* Borders show on parent navigation when element is collapsed so let's use background colour instead */
+}
+
+
+/* GROUP DECORATION / LISTS
+=================================================== */
+/* Default */
+.content-middle li {
+    margin-left: 1rem; /* Based on >> account.php */
+    padding-left: 0.5rem;
+}
+.page-tabs li {
+    margin-left: inherit;
+}
+
+/* No List Style */
+.list-style-1,
+#content-left li,
+#content-right li {
+    list-style: none;
+    margin-left: 0;
+}
+
+
+
+
+/* GROUP / MODULE / HEADER
+=================================================== */
+.header-banner {
+    position: relative; /* Needed to prevent filtered image in slider from blurring into header on iOS */
+    z-index: 11; /* Above the gallery plugin on the Product Detail page */
+}
+
+/* 600 + */
+@media screen and (min-width: 37.5em) {
+    .page-home .logo {
+        background-image: url(../img/overlay.png);
+    }
+}
+
+.lt-ie9 .header-search-container input[type="text"] {
+    padding-top: 15px;
+}
+
+.lt-ie9 .header-search-container {
+    width: 230px;
+}
+
+.logo * {
+    text-align: center;
+}
+
+.logo * /* Sizes completely custom */ {
+    font-size: 2.15rem;
+}
+/* 700 + */
+@media screen and (min-width: 43.75em) {
+    .logo * {
+        font-size: 2.8rem;
+    }
+}
+.tagline {
+    font-size: 0.75rem;
+}
+
+/* Search Box */
+.header-banner input[name="search"] {
+    margin-right: 0; /* Flush the 'Go' button to the search box just in the header */
+}
+/* GROUP MODULE / HEADER / TOP BAR
+=================================================== */
+/* - 430 */
+@media screen and (max-width: 26.8125em){
+    /* .header-banner { */
+        /* .top-bar { */
+            .top-bar__checkout {
+                display: none;
+            }
+        /* } */
+    /* } */
+}
+.top-bar a {
+    font-size: 16px; /* =JFG. These should always be small */
+}
+
+
+
+
+/* GROUP MODULE / FOOTER
+=================================================== */
+.copyright a {
+    display: inline-block; /* So padding takes effect */
+}
+
+.footer-container {
+    clear: both;
+    display: block;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+
+
+
+/* GROUP MODULE / CONTENT / HEADINGS
+=================================================== */
+.page-title {
+    clear: both; /* e.g. to clear floated captions like on cart.php?m=product_list&c=CATEGORY_ID */
+    text-align: center;
+}
+
+
+
+/* GROUP PAGE / HOME
+=================================================== */
+.page-home.slider-is-active .header-banner,
+.top_sellers.slider-is-active .header-banner {
+    margin-bottom: 0;
+}
+
+
+
+
+/* GROUP PAGE / MY ACCOUNT / MAIN
+=================================================== */
+
+
+
+
+/* GROUP PAGE / PRODUCT DETAIL
+=================================================== */
+#productReviews,
+#productBundle,
+.personalization-chart,
+.product-detail-description {
+    clear: both;
+}
+
+
+.product-detail-group *:not(.clickable-container) { /* Reset these so we're on a level playing field, 
+since we can't target some specific things like the radio and checkbox lists. 
+Instead we're _just_ going to target every .product-detail-group in the vertical rhythm section  */
+    margin-bottom: 0;
+}
+
+
+/* .item-udf, */.field-value,
+.listPrice,
+.personalizationContainer .field-label /* Custom fields 
+that customers add e.g. Size, Colour, etc. */ {
+    display: inline-block;
+}
+
+.msrp-container .field-label,
+.msrp-container .field-value {
+    text-decoration: line-through;
+}
+
+.product-details .field-label {
+    padding-left: 0; /* e.g. to neutralise MSRP so it lines up with the price */
+}
+
+.helper_icon img /* Helper image should not have the default .content-middle img padding */ {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.num-of-items {
+    display: block; /* Block (not inline-block so we can apply max-width value */
+}
+
+/* 768 to 990  */
+@media screen and (min-width: 48em) and (max-width: 61.875em) {
+    /* e.g. Admin > Product Detail > Variants > Text Area. CC-2935 */
+    .product-details textarea {
+        max-width: 270px;
+    }
+}
+/* GROUP PAGE / PRODUCT DETAIL / GALLERY
+=================================================== */
+/* .page-product_detail { */
+    #productPhotos {
+        position: relative;
+        z-index: 1;
+    }
+    
+    #productPhotos .pointer {
+         display: none;
+    }
+    
+    .filmstrip img {
+        padding-top: 0; /* Cancel default img padding */
+        padding-bottom: 0;
+    }
+    
+    .photo-container .caption--product {
+        position: absolute!important;
+        top: 0;
+        width: 100%;
+    }
+    
+    .photo-container--product-detail .btn--back-to-list {
+        margin-top: 70px ;/* Needed for when the gallery is active */
+    }
+    .img_wrap {
+        border-radius: 5%;
+        border-width: 2px!important;
+    }
+/* } */
+/* GROUP PAGE / PRODUCT DETAIL / REVIEWS
+=================================================== */
+.product-rating-overall img {
+    padding-bottom: 0; /* Cancel default */
+}
+
+
+
+
+/* GROUP PAGE / SEARCH
+=================================================== */
+.page_search .page-content,
+.page_search .breadcrumb {
+    max-width: 21rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+
+/* GROUP PAGE / VIEW CART
+=================================================== */
+.view .page-title {
+    max-width: 1100px;
+}
+
+.item-options { /* e.g. when you add a gift certificate to the cart via cart.php?m=gift_certificates */
+    line-height: 1.35;
+    display: inline-block;
+}
+
+.view-cart__item .thumb {
+    padding-left: 0; /* So it lines up with the edge of the table */
+}
+
+.view-cart-or {
+    display: block;
+    text-transform: uppercase;
+    font-size: 1.3em;
+}
+
+.actions--cart .btn--continue {
+    margin-bottom: 0; /* Cancel default .btn--continue margin */
+}
+
+@media screen and (min-width: 56.25em) { /* 900 */
+/*  body table th {
+        padding-top: 1.162rem; 
+    } */ /* Cancelled becaues it pushes the titles away from View Cart too much */
+    .thumb img {
+        max-height: 230px; /* Stop the rows getting too far apart */
+    }
+}
+
+/* Cart Amounts */
+@media screen and (min-width: 48em) { /* 768 */
+    .cart-amounts dt,
+    .cart-amounts dd {
+        float: left;
+    }
+}
+.lt-ie9 .cart-amounts dt, /* IE8 is not recognising the media query above */
+.lt-ie9 .cart-amounts dd {
+    float: left;
+}
+/* GROUP PAGE / VIEW CART / ADDITIONAL OPTIONS e.g. Product Variants, Gift Certificates, etc.
+=================================================== */
+.item-options {
+    display: block; /* Clear the line above */
+}
+img.photoClass {
+    padding-bottom: 0; /* We don't want padding here in case it is a "?" */
+}
+
+
+
+/* GROUP PAGE / CONFIRM ORDER INFORMATION
+=================================================== */
+.address-text {
+    line-height: 1.8; /* Slightly larger than normal? */
+}
+
+.confirm-product,
+.responsive-tables--confirm-order {
+    display: block;
+}
+
+
+
+
+/* GROUP PAGE / BLOG / INDIVIDUAL POST e.g. >> /cart.php?m=blog_post_detail&id=1
+=================================================== */
+.article-post__comment-date {
+    display: block;
+}
+
+
+
+
+/* GROUP PAGE / FAST CHECKOUT >> checkout.php?m=fastcheckout
+=================================================== */
+.form-side__section,
+form[name="address"] {
+    clear: both; /* Visit >> /checkout.php?m=fastcheckout when logged out. This is needed when the Bill address section is about 680 wide and doesn't clear the Forgot Password button properly */
+}
+
+.page_fastcheckout .cart-review, /* Specific to .page-fastcheckout because there's a .cart-review in View Cart too */
+.submit-order {
+    clear: both;
+}
+
+label[for="giftWrapCheckbox"] strong {
+    margin-left: 0.3rem; /* Tweak to give some breathing space */
+}
+
+#otherPaymentOptions {
+    display: inline-block; /* To make padding-bottom effective */
+}
+/* GROUP PAGE / FAST CHECKOUT / REVIEW >> checkout.php?m=fastcheckout
+=================================================== */
+.cart-review .page-sub-title {
+    margin-bottom: 0;
+}
+
+.cart-review .responsive-tables *:not(.btn) {
+    padding-left: 0; /* Because of background applied to parent element I've had to shift things around a bit */
+}
+
+
+
+
+/* GROUP PAGE / BILLING >> checkout.php?m=billing
+=================================================== */
+.page_bill .message--form,
+.page_ship .message--form {
+    display: block; /* Stretch across the page because there are two columns */
+}
+
+
+
+
+/* GROUP PAGE / WISHLIST
+=================================================== */
+/* - 428 */
+@media screen and (max-width: 26.6875em){
+    .wishlist_view .btn--back { /* >> /account.php?m=wishlist_view */
+        margin-left: 1rem; /* Hacky :-( */
+    }
+}
+
+
+
+/* GROUP BREAKPOINT / GRID FULL
+=================================================== */
+/* 825 + */
+@media screen and (min-width: 51.5625em) {
+    .l-w-s,
+    .page-title--hero, /* Only for page-titles that are on a grid basically */
+    /* Module > Headings */
+    .sort-options {
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+}

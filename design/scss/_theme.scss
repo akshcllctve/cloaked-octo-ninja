@@ -1,0 +1,1071 @@
+/* =JFG. This file isn't imported into framework, it just serves as a recommended structrue for your theme.scss - but it is up to the author whether they'd like to follow this recommendation. 
+
+If you choose not to follow this you can still use it as a checklist :-D */
+
+/* GROUP BASE / ELEMENTS
+=================================================== */
+@include mq($fontsize-increase-breakpoint-1) {
+    html {
+        font-size: 1.1em;
+    }
+}
+@include mq($fontsize-increase-breakpoint-2) {
+    html {
+        font-size: 1.15em;
+    }
+}
+
+/* Just .content__middle so we prevent elements outside of the main content (e.g. polling widget) from inheriting body text colour, less they look disabled, since the main body colour is normally an off-black e.g. (CC-2916) */
+.content__middle p,
+.content__middle span {
+    @extend %body-text;
+}
+
+/* GROUP BASE / ELEMENTS / HEADINGS - Keep these in Sass because sometimes we want
+to extend to other classes and it gets complicated e.g. 
+if we wanted to extend .h3 to .personalizationChart h5
+=================================================== */
+/* Reset browser */
+h1, h2, h3, h4, h5, h6,
+ul,
+ol,
+p,
+dl /* e.g. account.php */ {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.h1,.h2,.h3,.h4,.h5,.h6 {
+    @extend .l-w-l;
+    padding-bottom: $v-s;
+    margin-bottom: $v-s; /* based on account.php */
+    &, & * { /* To also target a tags inside elements e.g. <strong></strong>*/
+        @extend .f-3;
+    }
+    border-bottom: $border-grey-light;
+    @extend .l-w-mx-m; /* Default */
+}
+
+.h1 {
+    margin-bottom: $v-s-1;
+    font-size: $f-l;
+}
+h1 {
+    @extend .h1;
+}
+
+.h2 {
+    margin-bottom: $v-s-1;
+    font-size: $f-m;
+}
+h2 {
+    @extend .h2;
+}
+
+.h3 {
+    margin-bottom: $v-s-1;
+    font-size: $f-s-1;
+}
+h3 {
+    @extend .h3;
+}
+
+.h4 {
+    margin-bottom: $v-s;
+    font-size: $f-s;
+}
+
+h4 {
+    @extend .h4;
+}
+
+.h5 {   
+    margin-bottom: $v-s;
+/*  font-size: default browser / normalise decision; */
+}
+h5 {
+    @extend .h5;
+}
+
+.h6 {
+    margin-bottom: $v-s;
+/*  font-size: default browser / normalise decision; */
+}
+h6 {
+    @extend .h6;
+}
+
+%heading-alt { /* Use this when we don't want the bordered-style layout e.g. when there are lots of headings clumped together like >> login.php?m=client_login */
+    border-bottom: 0;
+    padding-bottom: $v-s; /* Based on cart.php?m=blog_post_list. Originally based on >> checkout.php?m=fastcheckout but I found this too extreme. */
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+%heading-alt-2 { /* When we don't want to indent */
+    margin-right: 0;
+    margin-left: 0;
+}
+
+%heading-alt-3 { /* Full width titles e.g. dt, dl */
+    padding-left: 0!important; /* !important needed for production compiling */
+    padding-right: 0!important;
+}
+
+
+/* GROUP BASE / ELEMENTS / TABLES
+=================================================== */
+/* All Responsive Tables */
+/* table*/.responsive-tables {
+    th {
+        font-size: $f-s;
+    }
+    td:before {
+        font-size: $f-s;
+        padding-right: 1rem;
+    }
+}
+
+.responsive-tables--mq-break-default {
+    @include tables(); /* [2] Set a default style for the majority of tables. The mixin default is 768 */
+    @include mq(768, max) {
+        table form /* e.g. account.php?m=wishlist_view */ {
+            padding-top: $v-s;
+        }
+        tr { /* e.g. >> account.php?m=previously_ordered_items */
+            padding-bottom: $v-l;
+        }
+    }
+}
+.responsive-tables--mq-break-1 {
+    @include tables(900); /* [3] Set alternative breakpoint 1 */
+    @include mq(899, max) {
+        & td[data-title="Thumbnail"]:before {
+            display: none;
+        }
+        table form /* e.g. account.php?m=wishlist_view */ {
+            padding-top: $v-s;
+        }
+        tr { /* e.g. >> account.php?m=previously_ordered_items */
+            padding-bottom: $v-l;
+        }
+    }
+    @include mq(900) {
+        th, td {
+            padding-right: 1.7rem;
+        }
+    }
+}
+
+/* Small Table */
+.table-s {
+    display: block;
+    padding-top: $v-m;
+    padding-bottom: $v-m;
+    @include l-w-l;
+    background-color: $c_black_off; /* Let's make the bold assumption that all small tables will have the same decoration */
+    
+    *:not(input) {
+        color: white;
+    }
+    
+    .lt-ie9 & * {
+        color: white; /* Because IE8 doesn't understand advanced selectors */
+    }
+
+    td:not(:first-child),
+    th:not(:first-child) {
+        padding-left: $l-w-l; /* Can't extend .l-w-l because then we will have an advanced selector in a group, causing IE8 to completely ignore the whole group */
+        padding-right: $l-w-l;
+    }
+    td {
+        padding-top: $v-s;
+        padding-bottom: $v-s;
+    }
+    td:first-child {
+        padding-left: 0;
+    }
+    th {
+        padding-bottom: $v-s;
+        text-align: left;
+        font-weight: auto;
+    }
+    /* Borders */
+    th,
+    tr:not(:last-child) {
+        border-bottom: 1px solid white;
+    }
+    th:not(:last-child),
+    td:not(:last-child) {
+        border-right: 1px solid white;
+    }
+    th {
+        border-bottom: 3px solid white;
+    }
+    
+    .cart-amount {
+        border-top: $border_grey;
+        td {
+            padding-top: $v-s;
+            border: none;
+        }
+    }
+}
+
+/* Thumbs */
+td.thumb img,
+td.compare-table-thumb /* Maybe too much of an assumption, but the comparison table shows Product Descrpition,
+which we don't want to be too far away from the thumbnail >> /cart.php?m=product_compare */ {
+    width: 61.8%;
+    max-width: 200px!important;
+}
+
+
+/* GROUP BASE ELEMENTS / INPUT
+=================================================== */
+@include mq($l-w-mx-wrapper--buffer, max) {
+    input[type="text"] {
+        min-width: 60px; /* For iOS devices, which treat input sizes differently (without this they're much smaller) */
+        max-width: 100%; /* Prevent the input box overflowing its container
+        E.g. Join our newsletter input in the widget */
+    }
+}
+
+
+
+
+/* GROUP FONTS
+=================================================== */
+/* Typically Headings */
+.f-3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    text-transform: lowercase;
+}
+
+
+
+
+/* GROUP FONTS / ICOMOON
+=================================================== */
+/* Module > Tabs */
+.page-tabs {
+    #facebook,
+    #twitter,
+    #google {
+        @extend %css-icon-icomoon;
+    }
+}
+
+
+
+
+/* GROUP LAYOUT
+=================================================== */
+.mq-nav-full-down { /* Class used in HTML >> header.tem.php */
+    @include mq($nav-full) {
+        display: none;
+    }
+}
+.mq-nav-full-up { /* Class used in HTML >> header.tem.php */
+    @include mq($nav-full+-1, max) {
+        display: none;
+    }
+}
+
+
+
+
+/* GROUP MODULE / BUTTONS
+=================================================== */
+input[type=text], /* E.g. Search box in nav */
+input[type=password] /* E.g. Password at login page */ {
+    border-radius: $br-s;
+    height: 43px; /* Need to use height because Firefox ignores padding on input http://stackoverflow.com/questions/7229568/input-height-differences-in-firefox-and-chrome 
+    Based on the Apply button on /cart.php?m=view */
+/*     @include mq($fontsize_increase_breakpoint_1) {
+        height: 48px;
+    } */
+}
+
+.content-middle .btn {
+    margin-bottom: $v-s;
+    margin-right: $h-m;
+}
+
+.btn--destruct {
+    border: 2px solid $c-red;
+    color: $c-red;
+    border-radius: $br-s;
+}
+/* GROUP MODULE / BUTTONS / CIRCULAR
+=================================================== */
+/* Circular Buttons. We Need To Be Careful With These Because We Have To Fix Their Width And Height To Get A Circle */
+/* Add To Cart */
+%btn--circular {
+    border-radius: 50%!important;
+    @extend %center-vertically;
+}
+
+div > /* Specifically following a div because we don't want this button decoration for tables */ .btn.btn--add-to-cart:not(.btn--add-all-items) {
+    @extend %btn--circular;
+    + .btn {
+        margin-top: $v-m; /* We need to do this because margin-bottom is not effective on 
+        %center-vertically elements, since we've changed their display value */
+    }
+}
+
+.borderradius {
+    div > a.btn--add-to-cart:not(.btn--add-all-items) { /* Specifically following a div because we don't want this button decoration for tables .Specific to an anchor tag, 
+we don't want to target input types because we can't wrap the text onto multiple lines with those */
+        width: 100px; /* Based on "Add to Cart" button on homepage at 768 width (where font-size has been bumped up) */
+        height: 100px;
+    }
+    div > input.btn--add-to-cart:not(.btn--add-all-items) { /* Specifically following a div because we don't want this button decoration for tables. Larger for input because we can't wrap the text onto multiple lines */
+        width: 125px;
+        height: 125px;
+    }
+    @include mq($fontsize_increase_breakpoint_1) { /* Because the increase in width and height is directly related to this font-size bump */
+        body div > a.btn--add-to-cart {
+            width: 105px;
+            height: 105px;
+        }
+
+        body div > /* Specifically following a div because we don't want this button decoration for tables */ input.btn--add-to-cart:not(.btn--add-all-items) /* Larger for input because we can't wrap the text onto multiple lines.
+        Not "Add All Items" because this text is longer */ {
+            width: 135px;
+            height: 135px;
+        }
+    }
+}
+
+
+
+
+/* GROUP MODULE / MISC
+=================================================== */
+%body-text {
+    color: $c-body;
+    line-height: $line-height-s;
+}
+%body-text-l { /* Not used at the moment but usef */
+    font-size: $f-s;
+    line-height: 1.45;
+    padding-bottom: $v-s-2;
+}
+
+.items {
+    line-height: $line-height-s; /* E.g. Modules > Widgets > Sidebar Detailed (Shopping Cart) */
+}
+
+.logo {
+    color: black;
+}
+
+/* Page > Fast Checkout. checkout.php?m=fastcheckout, just before "Join Our Newsletter" */
+.apply {
+    display: inline-block;
+}
+
+
+
+/* GROUP MODULE / INFORMATION / ERRORS (leave these in Sass, there are too many to keep track of and spread
+amongst different group selectors)
+=================================================== */
+#errors,
+/* .error-message, */ /* E.g. checkout.php?, once you've applied a gift certificate
+"Gift Certificate Applied, Balance: $400.84" (this
+shouldn't have all the properties as below). If you want to question this. Removed 
+this based on errors for the billing screen */
+/* >> /checkout.php?m=fastcheckout */
+#onepage-errors,
+.message,
+/* .myerror:not(.salePrice) */ /* Sometimes the system puts errors in place of info e.g. add a bundle price to Product Detail and you'll
+see 'Price for the Bundle: <div class='myerror salePrice'>$54.58</span>' */ {
+    @include l-w-l; /* Not @extend because we don't want an advanced selector in .l-w-l; because of IE8 selectors - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+    padding-bottom: $v-s-1;
+    margin-bottom: $v-s; /* Based on having multiple errors stacked on top of each other. 
+    2014-02-04 Update - I've increased from v-s to v-l, but haven't tested with multiple errors yet */
+    padding-top: $v-s-1;
+    line-height: 1.8; /* Because we can't make the brs take up any space */
+    /* Link http://www.colorzilla.com/gradient-editor/#f84036+0,f84036+100&0.89+0,0.7+100;Custom */
+/*     @extend %g_red; */
+    color: white;
+    display: inline-block;
+    @include mq($l-w-mx-l--buffer) {
+        border-radius: $br-s;
+    }
+}
+/* Ridiculous that we have to repeat the above, but that's what we've got to do folks because IE8 will nuke the group selector otherwise - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+.myerror:not(.salePrice) /* Sometimes the system puts errors in place of info e.g. add a bundle price to Product Detail and you'll
+see 'Price for the Bundle: <div class='myerror salePrice'>$54.58</span>' */ {
+    @include l-w-l; /* Not @extend because we don't want an advanced selector in .l-w-l; because of IE8 selectors - http://jennifergrucza.com/blog/archives/2006/07/19/be-careful-when-using-comma-separated-css-selectors-ie-will-ignore-the-whole-rule-if-it-doesnt-understand-one-of-the-selectors */
+    padding-bottom: $v-s-1;
+    margin-bottom: $v-s;
+    padding-top: $v-s-1;
+    line-height: 1.8; /* Because we can't make the brs take up any space */
+    /* Link http://www.colorzilla.com/gradient-editor/#f84036+0,f84036+100&0.89+0,0.7+100;Custom */
+/*     @extend %g_red; */
+    color: white;
+    display: block;
+    @include mq(600) {
+        display: inline-block; /* No longer full-width */
+        margin-left: 1rem;
+        margin-right: 1rem;
+        border-radius: 3px;
+    }
+}
+.message--info {
+    background-color: #768591;
+}
+
+
+/* GROUP MODULE / FORMS
+=================================================== */
+/* e.g. Billing, checkout.php?m=fastcheckout */
+.form-side,
+.side-container {
+    @include mq(1000) { /* Any lower than 100 and the Gift Certificate Continue button gets pushed onto another line on checkout.php?m=fastcheckout */
+        @include l-cols(2, 3);
+    }
+    @extend .l-row;
+}
+.form-side__section ,
+.side-container__section {
+    @extend .l-col-eq__col;
+}
+
+
+
+
+
+/* GROUP MODULE / BREADCRUMBS
+=================================================== */
+.breadcrumb /* =JFG. E.g. cart.php?m=search */ {
+    font-size: $f-s;
+}
+
+
+
+
+/* GROUP MODULE / WIDGETS
+=================================================== */
+.widget {
+    @extend .l-col-eq__col;
+    @extend .l-row; /* =JFG. Needed to clear things like New Arrivals + Reward Points */
+    &:not(.footer) .widget-title {
+        font-size: $f-s-1; /* =JFG. I had previously restricted this just to when the widgets are on the side, but then thought they should always be this size */
+    }
+}
+
+/* Both Left And Right */
+#content-left,
+#content-right {
+    @extend .l-row;
+    
+    @include mq($full-side-widgets+-1, max) {
+        padding-top: $v-l;
+        @include g-grey-light--diagonal;
+    }
+    @include mq($full-side-widgets) {
+        opacity: 0.9;
+        padding-top: $v-s-1; /* For when we hit full widescreen and widgets have a coloured background */
+        margin-bottom: $v-l*2; /* Push away from the footer */
+    }
+}
+
+.left-and-middle-content-wrapper {
+    width: 100%; /* Needed for checkout.php?m=billing and checkout.php?m=ship pages,
+    on higher breakpoints where only the left widget column is active */
+}
+
+
+
+
+/* Inline Widgets Like 'Join Our Newsletter' And 'Search' */
+.widget--inline input {
+    width: 70%; /* =JFG. As much as possible without going to next line */
+}
+
+
+
+
+/* Different Conditions at Lower Breakpoints */
+@include mq($full-side-widgets+-1, max) {
+    #content-left {
+        margin-top: $v-l*2; /* =JFG. Before changing this look at >> /cart.php?m=submit_quote, and checkout.php?m=bill on mobile */
+    }
+    #content-right {
+        padding-bottom: $v-l; /* Put space between the footer and widget, while the widgets are at the bottom */
+    }
+    .content-left__inner,
+    .content-right__inner {
+        @include mq(600) {  /* =JFG. Any less and the Join Our Newsletter Go button will be on a second line */
+            @include l-cols(2);
+        }
+        @include mq(1024) { /* =JFG. Any less and the Join Our Newsletter Go button will be on a second line */
+            @include l-cols(3);
+        }
+    }
+    body .widget { /* Top vanilla CSS specificity */
+        padding-bottom: $v-l-2; /* Provide more separation */
+    }
+}
+
+
+
+
+/* Higher Breakpoints */
+@include mq($full-side-widgets) {
+    .widget {
+        font-size: 0.85em; /* Reduce dominance */
+    }
+
+    .content-left-has-widgets .content__left, /* Make sure there are widgets present because CoreCommerce spits out the markup regardless, which means we are left with an isolated grey border */
+    .content-right-has-widgets .content__right,
+    .content-left-and-content-right-have-widgets .content__side {
+        background-color: $c-grey-light-3;
+    }
+    
+    
+    
+    
+    /* Layout */
+    .has-widgets {
+        #content-left,
+        #content-right {
+            width: $content-side-width+px;
+        }
+    }
+    
+    /* Just Left Widgets or Just Right Widgets */
+    .content-left-has-widgets,
+    .content-right-has-widgets {
+        .caption,
+        .page-title {
+            text-align: left; /* Looks lop-sided otherwise since one widget column is pushing it off-center */
+        }
+    }
+    
+    @include mq($l-w-mx-wrapper--buffer+-1, max) {
+        .slider-is-not-active.content-left-has-widgets,
+        .slider-is-not-active.content-right-has-widgets {
+            .left-and-middle-content-wrapper {
+                @include l-w-l; /* When only one side has widgets put padding round the edge of the window; it looks weird otherwise */
+            }
+        }
+    }
+}
+
+
+/* Tweak For Upper Mq To Make Use Of The Extra Space. These Aren't Exact Calculations Because We Are Using Fixed Widths For The .Content__Sides */
+@include mq(1625) {
+    /* Both Sides Have Widgets */
+    .content-left-and-content-right-have-widgets .left-and-middle-content-wrapper {
+        width: 83.3%;
+    }
+    .has-widgets #content-middle {
+        width: 80%!important;
+    }
+}
+
+
+
+
+/* GROUP MODULE / NAV
+=================================================== */
+.top-nav-wrapper {
+    background-color: #eee; /* When rgba is not supported */
+    background: rgba($c-grey-light-3, 0.75);
+}
+.nav-with-sub-menu {
+    > a::after {
+        font-size: 0.9em;
+        &, .dd-submenu & {
+            content: '\e603'; /* Icon fonts */
+        }
+        @include mq($nav-full) {
+            content: '\e606';
+        }
+    }
+    @include mq($nav-full) {
+        .top-nav > ul:not(.dd-submenu) > & {
+            &:hover {
+                @include boxshadow_light;
+                background-color: white;
+            }
+        }
+    }
+}
+
+.top-nav {
+    // @include mq($nav-full+-1, max) {
+    //     @include boxshadow_light;
+    // }
+    /* Centering */
+    @include mq($nav-full) {
+        /* Dropdown And Mega Menu (which use ul / li elements */
+        @include centered-nav;
+        /* For The Standard Navigation */
+        text-align: center;
+        & .center { /* I've checked, this is needed for the Standard nav. .center is always output for the Standard nav. Also IMO
+        the center option should not be there since it is a poor / hacky implementation */
+            display: inline-block;
+        }
+    }
+    .element-textstr {
+        @extend %body-text;
+    }
+    & .dd-submenu a:not(.btn) { /* Different padding for the second level submenu, feels too cramped otherwise */
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
+    }
+    & .mm-submenu { /* =JFG. Compress the padding for the Mega Menu */
+         a:not(.btn),
+        .no-link, /* Mega Menu titles with sub menus do not have an empty anchor tag (unlike the Drop Down menu) */
+        /* E.g. .mm-submenu span*/.element-title, /* Mega Menu section title */
+        /* E.g. .mm-submenu span*/.element-html /* Mega Menu custom HTML */ {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            &:not(.header-search-container .btn--search a), &:visited {
+                color: black;
+            }
+            &:hover:not {
+                color: black;
+            }
+        }
+        a,
+        .no-link, /* Mega Menu titles with sub menus do not have an empty anchor tag (unlike the Drop Down menu) */
+        /* E.g. .mm-submenu span*/.element-title, /* Mega Menu section title */
+        /* E.g. .mm-submenu span*/.element-html /* Mega Menu custom HTML */ {
+            padding-top: $v-s/2;
+            padding-bottom: $v-s/2;
+        }
+        .js-req-last-element-link {
+            margin-bottom: $v-m;
+        }
+    }
+    
+    /* Standard Menu (.link) */
+    .link {
+        $border-value: 3px;
+        border-bottom-width: $border-value; /* =JFG. Apply the border calculations before hover, to stop calculation flicker */
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        @include mq($nav-full) {
+            &:hover {
+                border-bottom-color: $c-2; /* =JFG. Doesn't look right on mobile */
+            }
+        }
+    }
+    /* Drop Down Menu */
+    .nav-with-sub-menu {
+        @include mq($nav-full) {
+            .dd-submenu ul { /* Just the drop-down menu */
+                @include boxshadow_light;
+                li {
+                    &:hover {
+                        background-color: $c-grey-light-2;
+                    }
+                }
+            }
+        }
+    }
+    /* Mega Menu */
+    /* li:hover .mm-submenu {
+        border-top: 2px solid $c-grey-light-2;
+    } */
+    .mm-submenu {
+        z-index: 999;
+        @extend .l-w-mx-l;
+        @include mq(499, max) {
+            > ul {
+                border-bottom: $border-grey-light-m;
+            }
+        }
+        @include mq($nav-full) {
+            @include l-w-l;
+        }
+        .lt-ie9 & {
+            top: 25px; /* Positioning is wrong in IE8. 
+            We need to butt the submenu very tight to the parent links otherwise the hover state will drop 
+            when mousing between the parent and Mega Menu */
+        }
+    }
+}
+@include mq($nav-full) {
+    .menu--mega .nav-with-sub-menu:hover .mm-submenu {
+        margin-top: $v-s;
+    }
+    
+    /* Standard Nav */
+    .js .top-nav .link { /* .center is removed with script.js to prevent a small gap underneath the Standard Nav */
+        float: none;
+        display: inline-block; /* Now that we don't have the .center wrapper, instead of floating we'll make the .links inline-block so that they can site in the center */
+    }
+    
+    
+    /* =JFG. Doesn't look right on mobile */
+    .top-nav > ul:nth-child(1) > li { /* =JFG. The first descendent */
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        &:hover {
+            border-bottom-color: $c-2;
+        }
+    }
+    
+    /* Search & Go */
+    .header-search-container input[type="text"] /* Search box */ {
+        position: relative;
+        height: 42px; /* Need to use height because Firefox ignores padding on input http://stackoverflow.com/questions/7229568/input-height-differences-in-firefox-and-chrome 
+        Based on the .header-search-container */
+        border: none;
+        border-radius: 0;
+    }
+    .top-nav li:hover > .mm-submenu > ul {
+        padding-bottom: $nav-space_value*2; /* Larger than default */
+    }
+}
+
+
+
+
+/* GROUP MODULE / CONTENT
+=================================================== */
+/* =JFG. Middle section */
+.content {
+    @extend .l-row; /* =JFG. Clear when all elements are floated e.g. Login (login.php?m=login) */
+    .content-left-and-content-right-have-widgets & {
+        max-width: $l-w-mx-wrapper-for-widgets+px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .content-left-has-widgets &, /* Smaller max with when we have only one widget column enabled */
+    .content-right-has-widgets & {
+        max-width: ($l-w-mx-wrapper+-$content-side-width/2)+px; /* Not an exact calculation because widgets are fixed width */
+        margin-right: auto;
+        margin-left: auto;
+    }
+    @include mq($full-side-widgets) { /* =JFG. When the widgets kick in */
+        margin-bottom: $v-l*2; /* To create space between content and footer e.g. >> /cart.php?m=search_results.
+        This is not needed for lower MQs because the widgets do the work */
+    }
+}
+
+.content-middle,
+.page-content {
+    @extend .l-row; /* =JFG. E.g. to clear floated elements on page like http://corecommerce-dev-fashionista.com/login.php?m=login */
+}
+
+
+
+
+/* GROUP MODULE / CONTENT / HEADINGS
+=================================================== */
+.page-title {
+    @extend .h1;
+}
+
+/* .page-sub-title {
+    @extend .h3; Cancel this because with cart.php?m=blog_post_detail&id=1 they are using .page-sub-title on an h3
+} */
+
+
+
+
+/* GROUP MODULE / HERO IMAGE
+   GROUP PLUGIN / NIVO SLIDER
+=================================================== */
+.nivo-caption {
+    bottom: auto; /* Override nivo CSS */
+    font-size: $f-s;
+    @include mq(670) {
+        font-size: $f-s-1;
+    }
+    .gt-ie8 & {
+        @extend %center-vertically-and-horizontally; /* IE8 - can't center properly */
+    }
+    .lt-ie9 & {
+        max-width: none!important;
+    }
+}
+
+
+
+
+/* GROUP PAGE / PRODUCT COMPARISON OR / COMPARISON TABLE
+=================================================== */
+.compare-table-description {
+    @extend %body-text;
+}
+
+.page_product_compare .page-sub-title {
+    @include mq(900) {
+        margin-bottom: $v-l; /* Table break point 1 */
+    }
+}
+
+
+
+
+/* GROUP MODULE / PRODUCT GRID
+=================================================== */
+@include mq(700) {
+    @include mq(970+-1, max) {
+        .grid--product,
+        .grid-options {
+            max-width: 45rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .content-middle .thumb img {
+            max-width: 270px;
+        }
+    }
+}
+
+.grid-options {
+    @include l-w-l;
+    @include mq($label-not-mobile+-1, max) {
+        .grid-options__sort-filters {
+            display: block;
+            margin-bottom: $v-s-1;
+        }
+        select {
+            max-width: none;
+            width: 100%;
+        }
+    }
+}
+.grid {
+    @extend .l-w-mx-l;
+    @include l-cols(1, 5);
+    @include mq(400+-1, max) {
+        #content-middle & .thumb img {
+            width: 66%; /* Constrain thumbs on small screens */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+/*     border-bottom: $border-grey-light-m; */ /* Cancelled on the basis of >> cart.php?m=view */
+    @include mq(450) {
+        @include l-cols(2, 5);
+    }
+    @include mq(760) {
+        @include mq(970+-1, max) {
+            @include l-w-s; /* Pinch spacing in for tablets */
+        }
+    }
+    @include mq(970) {
+        @include l-cols(3, 3);
+    }
+    @include mq(1200) {
+        /* @include l-cols(4, 2); */ /* Default. =JFG. I cancelled this because I don't even think the user can NOT control the columns */
+        &.l-cols-1 {
+            @include l-cols(1);
+        }
+        &.l-cols-2 {
+            @include l-cols(2, 5);
+/*             @include l-w-s; */
+        }
+        &.l-cols-3 {
+            @include l-cols(3, 3);
+        }
+        &.l-cols-4 {
+            @include l-cols(4, 2);
+        }
+        /* We also need to specify the default for IE8 */
+        &.l-cols-5 {
+            @include l-cols(5, 2);
+        }
+        &.l-cols-6 {
+            @include l-cols(6);
+        }
+    }
+}
+
+.grid__item {
+    @extend .l-col-eq__col;
+    padding-bottom: $v-l;
+    @include mq(785) {
+        margin-bottom: $v-l;
+    }
+    img {
+        @extend .l-w-l;
+    }
+    @include mq($nav-full) {
+        img {
+            margin-bottom: $v-s;
+        }
+    }
+}
+
+
+
+
+/* GROUP MODULE / PRODUCT GRID / CATEGORY LIST SPECIFIC
+=================================================== */
+.grid--category-item /* E.g. http://corecommerce-dev-fashionista.com/cart.php?m=product_list&c=10 
+or http://corecommerce-dev-fashionista.com/Men-s-Fashion/ */ {
+    @extend .l-col-eq__col;
+}
+
+.grid--category { /* E.g. >> /cart.php?m=product_list&c=CATEGORY_ID */
+    /* &:not([class*='l-cols']) { /* Only when the user has not specified the column number */ /* =JFG. I cancelled this because I don't even think the user can NOT control the columns */
+      /* @include l-cols(2, 3);
+        @include mq(680) {
+            @include l-cols(3, 3);
+        }
+    } */
+    @include mq($l-w-mx-m--buffer+-1) {
+        .grid--category-item-name {
+            @include l-w-l;
+        }
+    }
+}
+
+.category-drop-down {
+    border-bottom: $border_grey;
+}
+
+
+
+
+/* GROUP MODULE / PRODUCTS
+=================================================== */
+.item-name--product {
+    @include l-row;
+}
+
+
+
+
+/* GROUP MODULE / HEADER
+=================================================== */
+.header-banner {
+    @extend .l-row;
+    @include mq(599, max){
+        border-bottom: $border-grey-light-m; /* Stop showing the border after a certain width; it feels too "boxy" since the page title also has a border */
+    }
+    .slider-is-not-active & {
+        margin-bottom: $v-l*1.5;
+    }
+}
+/* .header-banner { */
+    .top-bar {
+        @include mq($top-bar_full+-1, max) {
+            background: rgba( $c-grey-light-3, 0.5);
+        }
+    }
+    
+    .logo,
+    .header-search-container {
+        position: relative; /* To pull above nav bar */
+    }
+    
+    /* =JFG. Can't change this markup */
+    .header-search-container {
+        @include mq($nav-full+-1, max) {
+            margin-top: $v-s-1; /* =JFG. Put some spacing between the mobile-nav and the search box */
+        }
+    }
+    
+    @include mq($nav-full) {
+        .header-search-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding-right: 0rem;
+        }
+    }
+/* } */
+
+
+
+
+/* GROUP MODULE / FOOTER
+=================================================== */
+.footer-container {
+    border-top: $border-grey-light-l;
+    @include g-grey-light--diagonal;
+}
+
+
+
+
+/* GROUP PAGE / PRODUCT DETAIL
+=================================================== */
+/* Title */
+/* Gallery / Photos */
+// #productPhotos {
+    /* I've cancelled the below for now in the interests of saving time, but it would be good to add icon-arrows back in future
+    .nav-next,
+    .nav-prev { /* Gallery arrows, markup generated by scripts.js */
+        /* z-index: 80; /* =JFG. Needed to pull above gallery images */
+        /* font-size: $f_l;
+        color: $c-grey-dark;
+        &:before {
+            position: relative;
+            top: -10px; /* =JFG. Tweak because of font-size */
+        /* }
+    }
+    .nav-prev {
+        &:before {
+            left: 8px;
+        }
+    }
+    .nav-next {
+        &:before {
+            left: -8px;
+        }
+    }  */
+// }
+
+.cart-amounts {
+    @extend .l-row; /* =JFG. Needed because we float all the .cart-amounts elements at a higher break point */
+    /* List Items */
+    dt {
+        padding-bottom: $v-s/2;
+    }
+    dd {
+        padding-bottom: $v-m;
+    }
+}
+/* GROUP PAGE / PRODUCT DETAIL / UPSELL PRODUCTS / PRODUCT BUNDLING
+=================================================== */
+/* GROUP PAGE / PRODUCT DETAIL / REVIEWS
+=================================================== */
+/* GROUP PAGE / PRODUCT DETAIL / PERSONALISATION
+=================================================== */
+
+
+
+
+/* GROUP PAGE / SEARCH
+=================================================== */
+.page_search .page-content {
+    border: $border-grey-light;
+}
+
+
+
+
+/* GROUP PAGE / BLOG / INDIVIDUAL POST e.g. >> /cart.php?m=blog_post_detail&id=1
+=================================================== */
+#post-date-author dt {
+    @extend .h4, %heading-alt-3;
+}
+
+
+
+
+/* GROUP PAGE / VIEW CART
+=================================================== */
+.num-of-items {
+    @extend .h3;
+}
+
+.btn-group--gateway {
+    @extend .l-row;
+}

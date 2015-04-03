@@ -1,0 +1,222 @@
+/* GROUP NEEDED / REFERENCED IN THE FRAMEWORK
+=================================================== */
+/* Max Widths */
+$l-w-mx-wrapper: 1700; /* =JFG. Needs to be wide enough to contain both the left and right widgets plus the main content */
+$l-w-mx-wrapper-for-widgets: 2000; /* Larger than the normal wrapper because we're including space for both widgets */
+$l-w-mx-wrapper--buffer: $l-w-mx-wrapper+100;
+$l-w-mx-l: 1330; /* =JFG. Max-width for site wrapper. Make unitless so we can use it in mixins */
+$l-w-mx-l--buffer: $l-w-mx-l+100; /* =JFG. Buffer so some things don't snap to the very edge as soon as we hit the $wrapper width */
+$l-w-mx-m: 1314;
+$l-w-mx-m--buffer: $l-w-mx-m+100;
+$l-w-mx-reading: 46rem;
+
+/* Width Constraints */
+$l-w-l: 1rem;
+$l-w-m: 1.875rem;
+$l-w-s: 4.5rem;
+
+/* Widgets */
+$left-and-middle-content-wrapper: 80%;
+$full-side-widgets: 1400; /* =JFG. Default variable for When the sidebar widgets float left and right next to the main content */
+$content-side-width: 270;
+
+/* Other Values */
+$label-not-mobile: 525;
+$nav-full: 960;
+$nav-width-value: 16rem; /* =JFG. Fixed width sub navs */
+$nav-space-value: 1.5rem; /* =JFG. Use a variable so we can counter padding with positioning adjustments */
+$top-bar-full: 1300;
+
+/* Horizontal Spacing Values for consistent rhythm. Consider using a scale like http://24ways.org/2011/composing-the-new-canon/ */
+$h-s: 0.35rem;
+$h-m: 0.7rem;
+$h-l: 1.5663rem;
+
+$v-s: 0.7rem;
+$v-s-1: 1.162rem;
+$v-s-2: 1.35rem;
+$v-m: 1.6rem;
+$v-l: 2.1rem;
+$v-l-2: 4.2rem;
+
+
+
+
+/* GROUP OPTIONAL / RECOMMENDED FOR USE IN THEME.SCSS
+=================================================== */
+$top-bar-full: 1300;
+$max-slider-height: 520px;
+
+/* GROUP FONTS
+=================================================== */
+$f-s-0-1: 0.9em;
+$f-s: 1.27em; /* Slightly larger than default 16px */
+$f-s-1: 1.524em; /* Adjusted 2013-10-16, based on .item-name--product, cart.php?m=search_results */
+$f-m: 1.9em;
+$f-l: 2.3em;
+
+$line-height-s: 1.4;
+
+$fontsize-increase-breakpoint-1: 768;
+$fontsize-increase-breakpoint-2: 1300;
+
+
+
+/* GROUP COLOURS
+=================================================== */
+$c-body: #333; /* Workhorse */
+$c-1: white;
+$c-2: #000;
+
+$c-black-off: #444;
+
+$c-red: #E73D3D;
+$c-red-dark: #C31910;
+
+/* Greys */
+$c-grey: #aaa;
+$c-grey-dark-0: #ccc;
+$c-grey-dark: #888;
+$c-grey-dark-2: #222;
+$c-grey-light: #DFDFDF;
+$c-grey-light-2: #f5f5f5;
+$c-grey-light-3: #fafafa;
+$c-grey-light-4: #fcfcfc;
+
+
+
+
+
+/* GROUP GRADIENTS
+=================================================== */
+@mixin g-grey-light--diagonal {
+	/* Link http://www.colorzilla.com/gradient-editor/#fcfcfc+0,ffffff+100;Custom */
+	background: linear-gradient(135deg, white 0%, $c-grey-light-3 100%); /* W3C */
+}
+@mixin g-grey-light--t {
+	/* Link http://www.colorzilla.com/gradient-editor/#fcfcfc+0,ffffff+100;Custom */
+	background: linear-gradient(to bottom, $c-grey-light-3 0%,white 100%); /* W3C */
+}
+@mixin g-grey-light--t-rev {
+	/* Link http://www.colorzilla.com/gradient-editor/#ffffff+0,fcfcfc+100;Custom */
+	background: linear-gradient(to bottom, white 0%,$c-grey-light-3 100%); /* W3C */
+}
+
+
+
+
+/* GROUP BORDERS
+=================================================== */
+$border-grey-dark-0: 1px dashed $c-grey-dark-0;
+$border-grey: 4px solid $c-grey-light;
+$border-grey-m: 6px solid $c-grey-light-2;
+$border-grey-light: 4px solid $c-grey-light-2;
+$border-grey-light-m: 6px solid $c-grey-light-3;
+$border-grey-light-l: 10px solid $c-grey-light-3;
+/* GROUP BORDER RADIUS
+=================================================== */
+$br-s: 3px;
+$br-m: 5px;
+$br-l: 10px;
+
+
+
+
+/* GROUP BOX SHADOWS - ordered from light to dark variants
+=================================================== */
+/* =JFG. Use a mixin with an include because an extend can't be used in and out of different media queries. Source http://stackoverflow.com/questions/14840918/removing-duplicate-css-with-sass-media-and-extend */
+
+/* Light */
+@mixin boxshadow-light {
+	box-shadow: 0 5px 9px rgba(0, 0, 0, 0.09);
+	.no-boxshadow & {
+		border: 3px solid #eee;
+	}
+}
+
+/* =JFG. Not bottom-loaded */
+@mixin boxshadow-light-2 {
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.09);
+}
+
+/* Light > Directions */
+@mixin boxshadow-light-s {
+	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+@mixin boxshadow-light-t {
+	box-shadow: 0 -7px 7px -7px rgba(0, 0, 0, 0.09);
+}
+
+@mixin boxshadow-light-b {
+	box-shadow: 0 10px 9px -8px rgba(0, 0, 0, 0.09);
+}
+
+@mixin boxshadow-light-b-2 {
+	box-shadow: 0 10px 9px -8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Light > Inset */
+@mixin boxshadow-light-inset {
+	box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.09);
+}
+
+@mixin boxshadow-light-t-inset {
+	box-shadow: inset 0 5px 6px 0px rgba(0, 0, 0, 0.06);
+}
+
+@mixin boxshadow-light-b-inset {
+	box-shadow: inset 0 -10px 9px -8px rgba(0, 0, 0, 0.09);
+}
+
+
+
+
+/* Normal */
+@mixin boxshadow {
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+@mixin boxshadow-focus { /* =JFG. The main section to draw attention to */
+	box-shadow: 7px 15px 40px rgba(0, 0, 0, 0.06), -7px 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Normal > Directions */
+@mixin boxshadow-b {
+	box-shadow: 0 10px 9px -8px rgba(0, 0, 0, 0.2);
+}
+
+@mixin boxshadow-left {
+	box-shadow: -10px 0px 9px -8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Normal > Inset */
+@mixin boxshadow-inset {
+	box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.2);
+}
+
+@mixin boxshadow-t-inset {
+	box-shadow: inset 0 4px 8px 0px rgba(0, 0, 0, 0.03);
+}
+
+@mixin boxshadow-field {
+	box-shadow: inset 0px 3px 4px rgba(0, 0, 0, 0.12);
+	border-bottom: 1px solid #DFDFDF;
+}
+
+
+
+
+/* Dark */
+@mixin boxshadow-dark {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Dark > Directions */
+@mixin boxshadow-right {
+	box-shadow: 10px 0px 6px -6px rgba(0, 0, 0, 0.05);
+}

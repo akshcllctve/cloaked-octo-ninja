@@ -1,0 +1,58 @@
+/* 
+
+Source: http://csswizardry.com/2013/04/shame-css/
+
+1. If it’s a hack, it goes in shame.css.
+
+2. Document all hacks fully:
+	a. What part of the codebase does it relate to?
+	b. Why was this needed?
+	c. How does this fix it?
+	d. How might you fix it properly, given more time?
+
+3. Do not blame the developer; if they explained why they had to do it then their reasons are probably (hopefully) valid.
+
+4. Try and clean shame.css up when you have some down time.
+	b. Even better, get a tech-debt story in which you can dedicate actual sprint time to it.
+
+Example - 
+
+=JFG. Nav Specificty Fix.
+Someone used an ID in the header code (#header a{}) which trumps the nav selectors (.site-nav a{}). Use !important to override it until I have time to refactor the header stuff.
+
+.site-nav a{
+	color:#BADA55!important;
+}
+
+*/
+
+/* =JFG. For mobile development - so it doesn't get too wide and viewers keep perception that it's mobile */
+
+@include mq(400) {
+	html {
+/* 		@include x-rem(max-width, 11010); */
+		margin-right: auto;
+		margin-left: auto;
+/* 		padding-top: 30px; */
+/* 		padding-bottom: 30px; */
+		background-color: #FDFDFD;
+	}
+}
+
+
+
+
+/* GROUP TEMP
+-------------------------------------------------- */
+#price {
+/* 	display: none; */
+}
+
+.product_detail {
+	/* =JFG. Temp for Gallery section */
+	@include mq(399, max) {
+		#photos * {
+			width: auto!important; // =JFG. Avoid overflow on mobile
+		}
+	}
+}

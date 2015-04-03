@@ -1,0 +1,84 @@
+   <!DOCTYPE html>
+<!-- Classes taken from http://html5boilerplate.com/ on 2013-10-25, with additonal classes added  -->
+<!--[if lt IE 7]>	  <html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 lt_ie10 lt_ie9 lt_ie8 lt_ie7"> <![endif]-->
+<!--[if IE 7]>		 <html class="no-js ie ie-7 lt-ie10 lt-ie9 lt-ie8 ie_7 lt_ie10 lt_ie9 lt_ie8"> <![endif]-->
+<!--[if IE 8]>		 <html class="no-js ie ie-8 lt-ie10 lt-ie9 gt-ie7 ie_8 lt_ie10 lt_ie9 gt_ie7"> <![endif]-->
+<!--[if IE 9 ]>		<html class="no-js ie ie-9 lt-ie10 gt-ie7 gt-ie8 ie_9 lt_ie10 gt_ie7 gt_ie8"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js ie gt-ie7 gt-ie8 gt-ie9 gt_ie7 gt_ie8 gt_ie9 modern_browser"> <!--<![endif]-->
+	<head>
+		<!-- BEGIN Shared HEAD_V3 that's pulled in from the global header file and pulled into header.html -->
+		##HEAD_V3##
+		<!-- END Shared HEAD_V3 that's pulled in from the global header file and pulled into header.html -->
+		<!-- http://www.google.com/fonts#UsePlace:use/Collection:Playfair+Display:400italic|Roboto+Condensed:400italic,400,700,300|Roboto:300,300italic,700 -->
+		<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400italic|Roboto+Condensed:400italic,400,700,300|Roboto:300,300italic,700' rel='stylesheet' type='text/css'>
+
+		<script type="text/javascript" src="##MERCHANT_URL##/00302-1/design/js/modernizr.custom.js"></script>
+
+		<!-- If we are IE9 and above, or not IE at all then we can handle rem units we just need the main.css file -->
+		<!--[if (gt IE 8)|!(IE)]><!-->
+				<link rel="stylesheet" type="text/css" href="##MERCHANT_URL##/00302-1/design/css/main.css" media="all" />
+			      <link rel="stylesheet" href="##MERCHANT_URL##/00302-1/design/font-awesome/css/font-awesome.css">
+         <link rel="stylesheet" href="##MERCHANT_URL##/00302-1/design/css/custom.css">
+         <link rel="apple-touch-icon" sizes="57x57" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="##MERCHANT_URL##/00302-1/design/css/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="##MERCHANT_URL##/00302-1/design/css/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="##MERCHANT_URL##/00302-1/design/css/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="##MERCHANT_URL##/00302-1/design/css/favicon-16x16.png">
+		<!--<![endif]-->
+		<!--<![endif]-->
+
+		<!-- If we are IE8 and below we can't handle rem units. We also need to polyfill Media Queries -->
+		<!--[if (lt IE 9) ]>
+			<link rel="stylesheet" type="text/css" href="##MERCHANT_URL##/00302-1/design/css/main-no-rem.css" media="all" />
+			<script type="text/javascript" src="##MERCHANT_URL##/00302-1/design/js/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+	<body class="##BODY_CLASSES##">
+		<div id="container" class="container">
+			<header role="banner" class="header-banner"> <!-- AR 09-11-2014 php /* Use a class because IE8 does not recognise the selector header[role="banner"] */ -->
+				<div id="top-bar" class="row top-bar">
+					<div class="l-w-mx-l">
+						<a href="##VIEW_CART_URL##">VIEW CART <i class="fa fa-shopping-cart"></i></a>
+						<a href="##CUSTOMER_ACCOUNT_URL##" class="btn btn--my_account"><?php $lang->xprint('title_my_account')?></a>
+						<a href="##MERCHANT_URL##/cart.php?m=checkout" class="top-bar__checkout">##LANG_TITLE_CHECKOUT##</a>
+						<div class="nav-mobile"> <!-- Added this div, but this can be included in the header -->
+							<button class="btn btn--nav">
+								<span class="nav-icon icon-list"></span>
+								<span class="x icon-cancel"></span>
+							</button>
+						</div>
+						
+					</div> <!-- .l-w-mx -->
+				</div>
+				<div class="logo l-w-l p-t-m p-b-m">
+					 <?php if($dsDesign->getMyLogo()){ ?>
+						 <?php print $dsDesign->getMyLogo() ?>
+					 ##ELSE##
+						 <a href="##MERCHANT_URL##">
+							 <div class="textlogo"><?php print $config->getValue('mCompany'); ?></div>
+						 </a>
+					 <?php } ?>
+				 </div>
+
+				<div class="top-nav-wrapper"> <!-- =JFG. Used purely to change the background -->
+					<nav class="top-nav">
+						##MENU_BAR_V2##
+						
+					</nav>
+				</div>
+
+			</header>
+
+			<div class="frame">
+				<div class="content">
+					<div class="left-and-middle-content-wrapper">
+						<div id="content-middle" class="content-middle">
