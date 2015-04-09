@@ -17,8 +17,7 @@
 		<!-- If we are IE9 and above, or not IE at all then we can handle rem units we just need the main.css file -->
 		<!--[if (gt IE 8)|!(IE)]><!-->
 				<link rel="stylesheet" type="text/css" href="##MERCHANT_URL##/00302-1/design/css/main.css" media="all" />
-			      <link rel="stylesheet" href="##MERCHANT_URL##/00302-1/design/font-awesome/css/font-awesome.css">
-         <link rel="stylesheet" href="##MERCHANT_URL##/00302-1/design/css/custom.css">
+   
          <link rel="apple-touch-icon" sizes="57x57" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-72x72.png">
@@ -41,15 +40,20 @@
 			<script type="text/javascript" src="##MERCHANT_URL##/00302-1/design/js/respond.min.js"></script>
 		<![endif]-->
 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-551da6f20f63ea3b" async="async"></script>
 	</head>
+
+
+
+
 	<body class="##BODY_CLASSES##">
+
 		<div id="container" class="container">
 			<header role="banner" class="header-banner"> <!-- AR 09-11-2014 php /* Use a class because IE8 does not recognise the selector header[role="banner"] */ -->
 				<div id="top-bar" class="row top-bar">
-					<div class="l-w-mx-l">
-						<a href="##VIEW_CART_URL##">VIEW CART <i class="fa fa-shopping-cart"></i></a>
-						<a href="##CUSTOMER_ACCOUNT_URL##" class="btn btn--my_account"><?php $lang->xprint('title_my_account')?></a>
-						<a href="##MERCHANT_URL##/cart.php?m=checkout" class="top-bar__checkout">##LANG_TITLE_CHECKOUT##</a>
+		
+						
+
 						<div class="nav-mobile"> <!-- Added this div, but this can be included in the header -->
 							<button class="btn btn--nav">
 								<span class="nav-icon icon-list"></span>

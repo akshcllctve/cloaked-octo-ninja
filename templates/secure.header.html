@@ -47,9 +47,7 @@
             <header role="banner" class="header-banner"> <!-- AR 04-02-2015 php /* Use a class because IE8 does not recognise the selector header[role="banner"] */ -->
                 <div id="top-bar" class="row top-bar">
                     <div class="l-w-mx-l">
-                        <a href="<!-- AR 04-02-2015 php echo Util::buildURL(($config ? $config->getValue('secureURL') : '') . '/cart.php', VIEW_CART_CMD); -->" class="btn--header-view-cart btn btn--4">VIEW CART <i class="fa fa-shopping-cart"></i></a>
-                        <a href="<!-- AR 04-02-2015 php echo Util::buildURL(($config ? $config->getValue('secureURL') : '') . '/cart.php', CUSTOMER_ACCOUNT_CMD); -->" class="btn btn--my_account"><?php $lang->xprint('title_my_account')?></a>
-                        <a href="##SECURE_URL##/cart.php?m=checkout" class="top-bar__checkout">##LANG_TITLE_CHECKOUT##</a>
+                      
                         <div class="nav-mobile"> <!-- Added this div, but this can be included in the header -->
                             <button class="btn btn--nav">
                                 <span class="nav-icon icon-list"></span>
