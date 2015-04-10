@@ -16,8 +16,12 @@
 
 		<!-- If we are IE9 and above, or not IE at all then we can handle rem units we just need the main.css file -->
 		<!--[if (gt IE 8)|!(IE)]><!-->
-				<link rel="stylesheet" type="text/css" href="##MERCHANT_URL##/00302-1/design/css/main.css" media="all" />
-   
+			
+         <link rel="stylesheet" href="##MERCHANT_URL##/00302-1/design/font-awesome/css/font-awesome.css">
+          <link rel="stylesheet" href="##MERCHANT_URL##/00302-1/design/css/bootstrap.css">
+          <link rel="stylesheet" type="text/css" href="##MERCHANT_URL##/00302-1/design/css/main.css" media="all" /> 
+         <link rel="stylesheet" href="##MERCHANT_URL##/00302-1/design/css/custom.css">
+
          <link rel="apple-touch-icon" sizes="57x57" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="##MERCHANT_URL##/00302-1/design/css/apple-icon-72x72.png">
@@ -48,37 +52,95 @@
 
 	<body class="##BODY_CLASSES##">
 
-		<div id="container" class="container">
-			<header role="banner" class="header-banner"> <!-- AR 09-11-2014 php /* Use a class because IE8 does not recognise the selector header[role="banner"] */ -->
-				<div id="top-bar" class="row top-bar">
-		
-						
+<div class="container-fluid white header--fixed hide-from-print" role="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+      <div class="col-md-7 col-md-push-5 hidden-xs hidden-sm">
+  
+  <ul class="nav navbar-nav navbar-right social">
 
-						<div class="nav-mobile"> <!-- Added this div, but this can be included in the header -->
-							<button class="btn btn--nav">
-								<span class="nav-icon icon-list"></span>
-								<span class="x icon-cancel"></span>
-							</button>
-						</div>
-						
-					</div> <!-- .l-w-mx -->
-				</div>
-				<div class="logo l-w-l p-t-m p-b-m">
-					 <?php if($dsDesign->getMyLogo()){ ?>
-						 <?php print $dsDesign->getMyLogo() ?>
-					 ##ELSE##
-						 <a href="##MERCHANT_URL##">
-							 <div class="textlogo"><?php print $config->getValue('mCompany'); ?></div>
-						 </a>
-					 <?php } ?>
-				 </div>
+          <li><a href="http://facebook.com/killianjewelry" target="_blank"><i class="fa fa-facebook fa-4x" id="socialwater"></i></a></li>
+          <li><a href="http://twitter.com/killianjewelry" target="_blank"><i class="fa fa-twitter fa-4x" id="socialwater"></i></a></li>
+      <li><a href="http://instagram.com/killianjewelry"><i class="fa fa-instagram fa-4x" id="socialwater"></i></a></li>
+                   <li><a href="http://pinterest.com/killianjewelry" target="_blank"><i class="fa fa-pinterest fa-4x" id="socialwater"></i></a></li>
+                
+      </ul>
 
-				<div class="top-nav-wrapper"> <!-- =JFG. Used purely to change the background -->
-					<nav class="top-nav">
-						##MENU_BAR_V2##
-						
-					</nav>
-				</div>
+
+      </div>
+
+       <div class="col-md-7 col-md-push-5 visible-sm">
+        <br>
+  
+
+<ul class="nav navbar-nav navbar-right social">
+ 
+          <a href="http://facebook.com/killianjewelry" target="_blank"><i class="fa fa-facebook fa-4x" id="socialwater"></i></a>
+          <a href="http://twitter.com/killianjewelry" target="_blank"><i class="fa fa-twitter fa-4x" id="socialwater"></i></a>
+      <a href="http://instagram.com/killianjewelry"><i class="fa fa-instagram fa-4x" id="socialwater"></i></a>
+                    <a href="http://pinterest.com/killianjewelry" target="_blank"><i class="fa fa-pinterest fa-4x" id="socialwater"></i></a>
+               
+</ul>
+
+      </div>
+  
+      <div class="col-sm-7 col-md-push-5 visible-xs">
+
+          <a href="http://facebook.com/killianjewelry" target="_blank"><i class="fa fa-facebook fa-2x" id="socialwater"></i></a>
+          <a href="http://twitter.com/killianjewelry" target="_blank"><i class="fa fa-twitter fa-2x" id="socialwater"></i></a>
+      <a href="http://instagram.com/killianjewelry"><i class="fa fa-instagram fa-2x" id="socialwater"></i></a>
+                    <a href="http://pinterest.com/killianjewelry" target="_blank"><i class="fa fa-pinterest fa-2x" id="socialwater"></i></a>
+               
+
+
+
+      </div>
+      <div class="col-md-5 col-md-pull-7">
+        <a href="/"><img src="##MERCHANT_URL##/00302-1/design/img/coolgrey.jpg" class="img-responsive logo"></a>
+      </div>
+</div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">     <nav class="navbar navbar-default" role="navigation">
+
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+   <button type="button" class="navbar-toggle collapsed tops" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+
+        <span class="sr-only">Toggle navigation</span>
+
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ 
+      <span class="navbar-brand"></span>
+
+    </div>
+
+   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       <ul class="nav navbar-nav navbar-right">
+      
+<li><a href="http://killianjewelry.com/">HOME</a></li>   
+        <li><a href="##MERCHANT_URL##/cart.php?m=view">VIEW CART</a></li>
+         <li><a href="##MERCHANT_URL##/cart.php?m=account">MY ACCOUNT</a></li>
+          <li><a href="http://killianjewelry.com/contact/">CONTACT</a></li>
+ 
+      </ul>
+  
+
+</nav>
+ </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 			</header>
 

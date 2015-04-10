@@ -4174,7 +4174,7 @@ h6,
 h6 *{
 font-family:'Roboto',sans-serif;
 font-weight:200;
-text-transform:lowercase
+text-transform:uppercase
 }
 
 .f-6,
@@ -4552,6 +4552,7 @@ margin-left:1rem
 
 .product_list .btn--continue{
 margin-left:1rem
+
 }
 
 }
@@ -5262,9 +5263,14 @@ padding-top:2.1rem
 .product-details,
 div>.btn.btn--add-to-cart,
 table:not(.chartPersonalization){
-margin-bottom:2.1rem
+margin-bottom:2.1rem;
+
 }
 
+
+.btn--continue, {
+border: 1px solid #ED1556;
+}
 .btn--subscribe,
 .order-complete .page-sub-title,
 .page-errors+div:not(.page-errors),
